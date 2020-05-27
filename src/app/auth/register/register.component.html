@@ -7,7 +7,7 @@
                       <mat-form-field class="example-form-field">
                         <mat-label>Clearable input</mat-label>
                         <input matInput #firstNameVal type="text" formControlName="firstName">
-                        <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="firstName.value=''">
+                        <button mat-button *ngIf="firstNameVal.value" matSuffix mat-icon-button aria-label="Clear" (click)="registerForm.get('firstName').reset()">
                           <mat-icon style="font-size: small;">close</mat-icon>
                         </button>
                       </mat-form-field>
@@ -15,14 +15,12 @@
 
               </form>
               <div class="row">
-                  <button class="btn btn-success" [disabled]="registerForm.invalid" (click)="onSubmit()">
-                      Pay securely&nbsp; &nbsp;<i class="fa fa-lock" aria-hidden="true"></i>
+                  <button class="btn btn-primary" [disabled]="registerForm.invalid" (click)="onSubmit()">
+                      Register&nbsp; &nbsp;<i class="fa fa-lock" aria-hidden="true"></i>
                   </button>
               </div>
               
-              <div class="row mt-1">
-                  <button class="btn btn-sm btn-outline-danger" >Cancel</button>
-              </div>
+              
               
           </div>
       </div>
