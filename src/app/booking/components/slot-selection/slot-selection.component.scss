@@ -1,0 +1,12 @@
+.main-container{
+    overflow: auto;
+    min-height: calc(100vh - 64px);
+    .title-div{
+        margin-top: 30px;
+    }
+    .cal{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+}

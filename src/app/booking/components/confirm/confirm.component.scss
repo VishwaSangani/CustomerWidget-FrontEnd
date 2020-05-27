@@ -1,0 +1,18 @@
+.main-container{
+    overflow: auto;
+    .title-div{
+        margin-top: 30px;
+    }
+    .all-data{
+        .data-center{
+            padding-left: 20%;
+        }
+        label{
+            font-weight: 500;
+            font-size: 20px;
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+}

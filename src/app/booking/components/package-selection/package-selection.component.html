@@ -1,0 +1,19 @@
+<section class="main-container">
+    <div class="container">
+        <div class="row title-div">
+            <h1 class="display-4"><mat-icon aria-hidden="false" aria-label="Example home icon">assignment</mat-icon>Select a Service Package</h1>
+            <button mat-flat-button color="primary">Add new car <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon></button>
+        </div>
+        <div class="row all-items-div">
+            <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of packages">
+                <mat-card class="card-div" (click)="packageSelected(item.name)">
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <mat-card-header class="text-center  d-flex justify-content-center">
+                        <mat-card-title>{{item.name}}</mat-card-title>
+                        <mat-card-subtitle>{{item.des}}</mat-card-subtitle>
+                      </mat-card-header>
+                  </mat-card>
+            </div>
+        </div>
+    </div>
+</section>

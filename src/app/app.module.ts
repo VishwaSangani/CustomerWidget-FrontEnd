@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './auth/auth.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModules } from './shared/material';
 
 
 
@@ -19,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AuthModule
+    AuthModule,
+    MaterialModules
   ],
   providers: [],
   bootstrap: [AppComponent]

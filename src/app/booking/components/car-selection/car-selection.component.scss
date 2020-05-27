@@ -1,0 +1,19 @@
+.main-container{
+    overflow: auto;
+    min-height: calc(100vh - 64px);
+    .title-div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        h1{
+            margin: 0;
+        }
+    }
+    .all-items-div{
+        margin-top: 30px;
+        .card-div{
+            margin-top: 20px;
+        }
+    }
+}

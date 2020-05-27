@@ -1,0 +1,32 @@
+<section class="main-container">
+    <div class="container">
+        <div class="title-div">
+            <h1 class="text-center display-4">Summary</h1>
+        </div>
+        <div class="all-data">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-12 data-center">
+                    <label for="" class="mat-subheading-2 m-0">Dealer</label>
+                    <p>{{details.dealer}}</p>
+                    <label for="" class="mat-subheading-2 m-0">Address</label>
+                    <p>{{details.address}}</p>
+                    <label for="" class="mat-subheading-2 m-0">Package</label>
+                    <p>{{details.package}}</p>
+                    <label for="" class="mat-subheading-2 m-0">Services</label>
+                    <p>{{details.services}}</p>
+                </div>
+                <div class="col-md-6 col-12 data-center">
+                    <label for="" class="mat-subheading-2 m-0">Date</label>
+                    <p>{{details.date}}</p>
+                    <label for="" class="mat-subheading-2 m-0">Time</label>
+                    <p>{{details.time}}</p>
+                    <label for="" class="mat-subheading-2 m-0">Cost</label>
+                    <p>{{ details.price  | currency:'INR' }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mt-3">
+            <button class="select-btn" mat-flat-button color="primary">Confirm Booking</button>
+        </div>
+    </div>
+</section>
