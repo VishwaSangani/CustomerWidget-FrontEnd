@@ -1,0 +1,31 @@
+ <section>
+  <div class="container main flex-column d-flex">
+      <div class="cardBack">
+          <div class="container items d-flex justify-content-center align-items-center flex-column">
+              <form [formGroup]="registerForm">
+                  <div class="form-group">
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Clearable input</mat-label>
+                        <input matInput #firstNameVal type="text" formControlName="firstName">
+                        <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="firstName.value=''">
+                          <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                      </mat-form-field>
+                  </div>
+
+              </form>
+              <div class="row">
+                  <button class="btn btn-success" [disabled]="registerForm.invalid" (click)="onSubmit()">
+                      Pay securely&nbsp; &nbsp;<i class="fa fa-lock" aria-hidden="true"></i>
+                  </button>
+              </div>
+              
+              <div class="row mt-1">
+                  <button class="btn btn-sm btn-outline-danger" >Cancel</button>
+              </div>
+              
+          </div>
+      </div>
+      
+  </div>
+</section>

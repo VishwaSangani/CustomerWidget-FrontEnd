@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "CustomerWidget-FrontEnd"
+  "defaultProject": "CustomerWidget-FrontEnd",
+  "cli": {
+    "analytics": "37c9a438-6dd2-4186-a3a2-b4047a769d86"
+  }
 }
