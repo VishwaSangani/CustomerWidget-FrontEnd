@@ -1,0 +1,31 @@
+<section class="main-container">
+    <div class="container">
+        <div class="row title-row">
+            <h1 class="display-4">Dealer Selection</h1>
+        </div>
+        <div class="dealer-list-table">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Sr.No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Serivces</th>
+                    <th scope="col" class="tab-w-5">Price</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dealerList">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.service}}</td>
+                    <td class="tab-w-5 text-right">{{item.price | currency: 'INR' }}</td>
+                    <td class="d-flex justify-content-end">
+                        <button class="select-btn" mat-flat-button color="primary" (click)="dealerSelected(item.id)">Select Package</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
