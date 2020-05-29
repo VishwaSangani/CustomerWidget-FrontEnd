@@ -5,10 +5,12 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { SignInComponent } from './sign-in/sign-in.component'
 import { RegisterComponent } from './register/register.component'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatIconModule, MatIcon} from '@angular/material/icon';
+import {MatIconModule} from '@angular/material/icon';
 import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import{MatButtonModule} from '@angular/material/button'
+import{MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [SignInComponent, RegisterComponent],
@@ -20,13 +22,17 @@ import{MatButtonModule} from '@angular/material/button'
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule
   ],
   exports:[
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule
   ]
 })
 export class AuthModule { }

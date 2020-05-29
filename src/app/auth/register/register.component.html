@@ -1,27 +1,177 @@
  <section>
   <div class="container main flex-column d-flex">
+    
       <div class="cardBack">
-          <div class="container items d-flex justify-content-center align-items-center flex-column">
-              <form [formGroup]="registerForm">
-                  <div class="form-group">
-                      <mat-form-field class="example-form-field">
-                        <mat-label>Clearable input</mat-label>
+        <mat-toolbar color="primary">
+          <mat-toolbar-row>
+            <span>Register</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
+          <div class=" items d-flex justify-content-center align-items-center flex-column">
+              <form [formGroup]="registerForm" class="example-form">
+                  <div class="form-row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>First Name</mat-label>
                         <input matInput #firstNameVal type="text" formControlName="firstName">
                         <button mat-button *ngIf="firstNameVal.value" matSuffix mat-icon-button aria-label="Clear" (click)="registerForm.get('firstName').reset()">
                           <mat-icon style="font-size: small;">close</mat-icon>
                         </button>
+                        <mat-error *ngIf="registerForm.get('firstName').hasError('required')">
+                          This field is required!
+                        </mat-error>
                       </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput #lastNameVal type="text" formControlName="lastName">
+                        <button mat-button *ngIf="lastNameVal.value" matSuffix mat-icon-button aria-label="Clear" (click)="registerForm.get('lastName').reset()">
+                          <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerForm.get('lastName').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  
+                 
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Email </mat-label>
+                        <input matInput #emailVal type="text" formControlName="emailId">
+                        <button mat-button *ngIf="emailVal.value" matSuffix mat-icon-button aria-label="Clear" (click)="registerForm.get('emailId').reset()">
+                          <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerForm.get('emailId').hasError('email') && !registerForm.get('emailId').hasError('required')">
+                          Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('emailId').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class=" form-group col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput #mobileVal type="text" formControlName="mobileNumber">
+                        <button mat-button *ngIf="mobileVal.value" matSuffix mat-icon-button aria-label="Clear" (click)="registerForm.get('mobileNumber').reset()">
+                          <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerForm.get('mobileNumber').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <mat-form-field style="width: 100%;">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput placeholder="Ex. 100 Main St" formControlName="address"></textarea>
+                        <mat-error *ngIf="registerForm.get('address').hasError( 'required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                 
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <mat-form-field class="w-100">
+                        <mat-label>Address 2</mat-label>
+                        <textarea matInput placeholder="Ex. 100 Main St" formControlName="address2"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                 
+                  <div class="row">
+                    <div class="form-group col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>City</mat-label>
+                        <input matInput #cityVal type="text" formControlName="city">
+                        <button mat-button *ngIf="cityVal.value" matSuffix mat-icon-button aria-label="Clear" (click)="registerForm.get('city').reset()">
+                          <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerForm.get('city').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>State</mat-label>
+                        <select matNativeControl formControlName="state">
+                          <option value="" selected></option>
+                          <option *ngFor="let state of states" >
+                            {{state}}
+                          </option>
+                        </select>
+                        <mat-error *ngIf="registerForm.get('state').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput #zipcodeVal type="text" maxlength="6" formControlName="zipcode">
+                        <mat-hint align="end">{{zipcodeVal.value.length}} / 6</mat-hint>
+                        <button mat-button *ngIf="zipcodeVal.value" matSuffix mat-icon-button aria-label="Clear" (click)="registerForm.get('zipcode').reset()">
+                          <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerForm.get('zipcode').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('zipcode').hasError('minlength')">
+                          Zip Code has to be 6 digits
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <mat-form-field class="example-full-width">  
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerForm.get('password').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class=" form-group col-md-6">
+                      <mat-form-field class="example-full-width">  
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerForm.get('password').hasError('required')">
+                          This field is required!
+                        </mat-error>
+                      </mat-form-field>
+                      
+                    </div>
                   </div>
 
               </form>
-              <div class="row">
-                  <button class="btn btn-primary" [disabled]="registerForm.invalid" (click)="onSubmit()">
-                      Register&nbsp; &nbsp;<i class="fa fa-lock" aria-hidden="true"></i>
+              <div class="row d-flex flex-row justify-content-around">
+                  <button mat-raised-button color="primary" class="button-submit"  (click)="onSubmit()">
+                      Register
+                  </button>
+                  <button mat-raised-button color="accent" class="button-submit mx-3"  routerLink="/signin">
+                      Cancel
                   </button>
               </div>
-              
-              
-              
           </div>
       </div>
       
