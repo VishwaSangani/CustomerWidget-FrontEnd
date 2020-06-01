@@ -1,7 +1,7 @@
 import { MaterialModules } from './../shared/material';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookingRoutingModule } from './booking-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ComponentsComponent } from './components/components.component';
@@ -10,6 +10,7 @@ import { PackageSelectionComponent } from './components/package-selection/packag
 import { DealerSelectionComponent } from './components/dealer-selection/dealer-selection.component';
 import { SlotSelectionComponent } from './components/slot-selection/slot-selection.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 
@@ -23,12 +24,15 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     PackageSelectionComponent,
     DealerSelectionComponent,
     SlotSelectionComponent,
-    ConfirmComponent],
+    ConfirmComponent
+  ],
   imports: [
     CommonModule,
     BookingRoutingModule,
     MaterialModules,
     MatNativeDateModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [MatDatepickerModule]
 })

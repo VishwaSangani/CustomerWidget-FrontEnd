@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row title-div">
             <h1 class="display-4"><mat-icon aria-hidden="false" aria-label="Example home icon">directions_car</mat-icon>Select your car</h1>
-            <button mat-flat-button color="primary">Add new car <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon></button>
+            <button mat-flat-button color="primary" (click)="showModal = true">Add new car <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon></button>
         </div>
         <div class="row all-items-div">
             <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
@@ -17,3 +17,75 @@
         </div>
     </div>
 </section>
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header p-0">
+            <mat-toolbar color="primary">
+                <mat-toolbar-row>
+                    <h5 class="modal-title">Register Car</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </mat-toolbar-row>
+              </mat-toolbar>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="carDetailsForm">
+            <div class="d-flex flex-column">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Car Name</mat-label>
+                    <input matInput #carname type="text" formControlName="carName" style="padding-left: 10px;">
+                    <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('carName').reset()">
+                      <mat-icon style="font-size: small;">close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="carDetailsForm.get('carName').hasError('required')">
+                      This field is required!
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Car Brand</mat-label>
+                    <input matInput #carbrand type="text" formControlName="carBrand" style="padding-left: 10px;">
+                    <button mat-button *ngIf="carbrand.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('carBrand').reset()">
+                      <mat-icon style="font-size: small;">close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="carDetailsForm.get('carBrand').hasError('required')">
+                      This field is required!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Registration Number</mat-label>
+                    <input matInput #carno type="text" formControlName="carNumber" style="padding-left: 10px;">
+                    <button mat-button *ngIf="carno.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('carNumber').reset()">
+                      <mat-icon style="font-size: small;">close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="carDetailsForm.get('carNumber').hasError('required')">
+                      This field is required!
+                    </mat-error>
+                    <mat-error *ngIf="carDetailsForm.get('carNumber').hasError('maxlength')">
+                       Car registration number cannot be more than 10 characters
+                      </mat-error>
+                </mat-form-field>
+                
+            </div>
+              
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+
+
+  

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, Validator, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-car-selection',
@@ -8,7 +9,11 @@ import { Router } from '@angular/router';
 })
 export class CarSelectionComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private fb : FormBuilder) { }
+
+  showModal : Boolean = false;
+  carDetailsForm : FormGroup
+
 
   carList = [
     {
@@ -29,11 +34,21 @@ export class CarSelectionComponent implements OnInit {
     }
   ];
   ngOnInit(): void {
+    this.carDetailsForm = this.fb.group({
+      carName: ['',Validators.required],
+      carBrand : ['', Validators.required],
+      carNumber : ['',[Validators.required, Validators.maxLength(10)]]
+    })
   }
 
 
   carSelected(name: String) {
     console.log(`Selected Item: ${name}`);
     this._router.navigate(['../booking/packageSelection']);
+  }
+
+  closeModal(){
+    this.showModal = false;
+    this.carDetailsForm.reset();
   }
 }
