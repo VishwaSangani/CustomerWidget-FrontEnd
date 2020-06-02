@@ -39,15 +39,24 @@ export class SlotSelectionComponent implements OnInit {
     },
   ];
   constructor(private _router: Router) { }
+
+
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
     // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;
   }
+
+  currentDate = new Date(); 
+  selDate = new Date(this.currentDate.getFullYear()+'/'+(this.currentDate.getMonth()+1)+'/'+this.currentDate.getDate())
+  minDate = new Date(this.currentDate.getFullYear()+'/'+(this.currentDate.getMonth()+1)+'/'+this.currentDate.getDate())
+  maxDate = new Date(this.currentDate.getFullYear()+'/'+(this.currentDate.getMonth()+2)+'/'+this.currentDate.getDate())
+
   ngOnInit(): void {
   }
 
   dateSelected(event) {
+    this.selDate = event;
     this.date = moment(event.value).format('DD/MM/YYYY');
     console.log(this.date);
   }

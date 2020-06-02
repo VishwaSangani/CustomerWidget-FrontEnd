@@ -1,7 +1,11 @@
 <section class="main-container">
     <div class="container">
         <div class="row title-div">
-            <h1 class="display-4"><mat-icon aria-hidden="false" aria-label="Example home icon">directions_car</mat-icon>Select your car</h1>
+          <div class="d-flex flex-row">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 40px;">directions_car </mat-icon>&nbsp;&nbsp;
+            <h1 class="display-4 p-2">Select your car</h1>
+          </div>
+          
             <button mat-flat-button color="primary" (click)="showModal = true">Add new car <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon></button>
         </div>
         <div class="row all-items-div">
