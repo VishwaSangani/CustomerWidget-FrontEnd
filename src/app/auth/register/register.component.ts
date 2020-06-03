@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm:FormGroup;
   states: string[] 
   hide = true
+  cnfhide =true
   constructor(private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
