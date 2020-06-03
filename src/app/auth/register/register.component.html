@@ -171,8 +171,8 @@
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-error *ngIf="registerForm.hasError('pswdMatch')">
-                         This feild is required!
+                        <mat-error *ngIf="registerForm.get('confirmPassword').hasError('passwordMismatch')">
+                         Password missmatch!
                         </mat-error>
                       </mat-form-field>
                       

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, AbstractControl, Validators,FormBuilder } from '@angular/forms';
+import { FormGroup, AbstractControl, Validators,FormBuilder, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { states } from '../../../environments/variables'
 
 
@@ -29,7 +29,32 @@ export class RegisterComponent implements OnInit {
       zipcode : ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern("[0-9 ]{6}")]],
       password : ['',Validators.required],
       confirmPassword : ['', Validators.required],
-    });
+    },
+      { 
+        validator: this.passwordMatch('password','confirmPassword')
+      }
+    );
+  }
+
+  passwordMatch(password: string, confirmPassword: string){
+    return(formGroup: FormGroup) => {
+      const passwordControl = formGroup.controls[password];
+      const confirmPasswordControl = formGroup.controls[confirmPassword];
+      if (!passwordControl || !confirmPasswordControl) {
+        return null;
+      }
+
+      if (confirmPasswordControl.errors && !confirmPasswordControl.errors.passwordMismatch) {
+        return null;
+      }
+
+      if (passwordControl.value !== confirmPasswordControl.value) {
+        confirmPasswordControl.setErrors({ passwordMismatch: true });
+      } else {
+        confirmPasswordControl.setErrors(null);
+      }
+    }
+
   }
 
  
