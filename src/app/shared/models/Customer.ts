@@ -8,3 +8,8 @@ ContactNo:number;
 Address:string;
 
 }
+
+export class UserLogin{
+    Email:string;
+    Password:string;
+}
