@@ -43,7 +43,7 @@ console.log(this.customer)
 this._createcustomer.ValidateUser(this.customer)
 .subscribe(
   data => {
-    localStorage.setItem('UserDetails', JSON.stringify(this.customer));
+    localStorage.setItem('UserEmail', JSON.stringify(this.customer.Email));
     this.router.navigate(['/booking']);
   },
   (error:HttpErrorResponse) => {

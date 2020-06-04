@@ -39,7 +39,7 @@ export class CarSelectionComponent implements OnInit {
       carBrand : ['', Validators.required],
       carNumber : ['',[Validators.required, Validators.maxLength(10)]]
     });
-    console.log(localStorage.getItem('UserDetails'));
+    console.log(localStorage.getItem('UserEmail'));
   }
 
 
