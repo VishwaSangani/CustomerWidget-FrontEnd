@@ -1,6 +1,7 @@
 <section class="main-container">
     <div class="container">
         <div class="title-div">
+          <h1 class="display-4">Dealer Name: {{Dealername}} </h1>
             <h1 class="display-4">Select your prefered Date and Time </h1>
         </div>
         <div class="cal">
@@ -16,19 +17,19 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Sr.No</th>
+                    <th scope="col">Sr. No</th>
                     <th scope="col">Time</th>
                     <th scope="col" class="text-right">Slots</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of slots">
-                    <th scope="row">{{item.id}}</th>
-                    <td>{{item.time}}</td>
-                    <td class="text-right">{{item.slots}}</td>
+                  <tr *ngFor="let item of slots;let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.SlotTime}}</td>
+                    <td class="text-right">{{item.SlotAvailable}}</td>
                     <td class="text-right">
-                        <button mat-flat-button color="primary" (click)="bookService()">Book</button>
+                        <button mat-flat-button color="primary" (click)="bookService(item.SlotTime)">Book</button>
                     </td>
                   </tr>
                 </tbody>
