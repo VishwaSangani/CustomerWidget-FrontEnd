@@ -13,8 +13,9 @@
                 <mat-card class="card-div" (click)="carSelected(item.name)">
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
                     <mat-card-header class="text-center  d-flex justify-content-center">
-                        <mat-card-title>{{item.name}}</mat-card-title>
-                        <mat-card-subtitle>{{item.number}}</mat-card-subtitle>
+                        <mat-card-title>{{item.BrandName}}</mat-card-title>
+                        <mat-card-subtitle>{{item.Model}}</mat-card-subtitle>
+                        <mat-card-subtitle>{{item.RegistrationNo}}</mat-card-subtitle>
                       </mat-card-header>
                   </mat-card>
             </div>
@@ -43,36 +44,36 @@
             <div class="d-flex flex-column">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Car Name</mat-label>
-                    <input matInput #carname type="text" formControlName="carName" style="padding-left: 10px;">
-                    <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('carName').reset()">
+                    <input matInput #carname type="text" formControlName="Model" style="padding-left: 10px;">
+                    <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('Model').reset()">
                       <mat-icon style="font-size: small;">close</mat-icon>
                     </button>
-                    <mat-error *ngIf="carDetailsForm.get('carName').hasError('required')">
+                    <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
                       This field is required!
                     </mat-error>
                 </mat-form-field>
     
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Car Brand</mat-label>
-                    <input matInput #carbrand type="text" formControlName="carBrand" style="padding-left: 10px;">
-                    <button mat-button *ngIf="carbrand.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('carBrand').reset()">
+                    <input matInput #carbrand type="text" formControlName="BrandName" style="padding-left: 10px;">
+                    <button mat-button *ngIf="carbrand.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('BrandName').reset()">
                       <mat-icon style="font-size: small;">close</mat-icon>
                     </button>
-                    <mat-error *ngIf="carDetailsForm.get('carBrand').hasError('required')">
+                    <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
                       This field is required!
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Registration Number</mat-label>
-                    <input matInput #carno type="text" formControlName="carNumber" style="padding-left: 10px;">
-                    <button mat-button *ngIf="carno.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('carNumber').reset()">
+                    <input matInput #carno type="text" formControlName="RegistrationNo" style="padding-left: 10px;">
+                    <button mat-button *ngIf="carno.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('RegistrationNo').reset()">
                       <mat-icon style="font-size: small;">close</mat-icon>
                     </button>
-                    <mat-error *ngIf="carDetailsForm.get('carNumber').hasError('required')">
+                    <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('required')">
                       This field is required!
                     </mat-error>
-                    <mat-error *ngIf="carDetailsForm.get('carNumber').hasError('maxlength')">
+                    <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('maxlength')">
                        Car registration number cannot be more than 10 characters
                       </mat-error>
                 </mat-form-field>
@@ -84,7 +85,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" (click) = "addCar()">Add Car</button>
         </div>
       </div>
     </div>
