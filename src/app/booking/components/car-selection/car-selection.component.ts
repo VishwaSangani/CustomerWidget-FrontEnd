@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, Validator, FormBuilder, Validators } from '@angular/forms';
 import { CarServiceService } from 'src/app/shared/services/car-service.service';
 import { CarDetails, Car } from 'src/app/shared/models/Car'
+import { UserData } from 'src/app/shared/models/UserData';
 
 @Component({
   selector: 'app-car-selection',
@@ -16,11 +17,13 @@ export class CarSelectionComponent implements OnInit {
   showModal : Boolean = false;
   carDetailsForm : FormGroup
   carList 
+  userdetails : UserData
 
    
   ngOnInit(): void {
 
-    console.log(localStorage.getItem('UserEmail'))
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails'));
+    console.log(this.userdetails.Email)
     this.getAllCars();
     this.carDetailsForm = this.fb.group({
       Model: ['',Validators.required],
@@ -30,8 +33,10 @@ export class CarSelectionComponent implements OnInit {
   }
 
 
-  carSelected(name: String) {
-    console.log(`Selected Item: ${name}`);
+  carSelected(id: number) {
+    console.log(`Selected Item: ${id}`);
+    this.userdetails.CarId = id;
+    localStorage.setItem('UserDetails',JSON.stringify(this.userdetails));
     this._router.navigate(['../booking/packageSelection']);
   }
 
@@ -46,29 +51,32 @@ export class CarSelectionComponent implements OnInit {
       RegistrationNo : "",
       BrandName : "",
       Model : "",
-      Email : localStorage.getItem('UserEmail')
+      Email : this.userdetails.Email
     }
       console.log(usercar)
       this.carservice.getCars(usercar).subscribe(
         data => {
           this.carList = data;
-          console.log(data)
+          console.table(data)
+        },
+        error => {
+          console.log('Error is :'+ JSON.stringify(error))
         })
   }
 
   addCar(){
     let car : CarDetails = this.carDetailsForm.value;
-    car.Email = localStorage.getItem('UserEmail');
+    car.Email = this.userdetails.Email;
     console.log(car)
     this.carservice.addCar(car).subscribe(
       data => {
         alert("Added the car!!")
         this.getAllCars();
-      }
-    )
+      },
+      error => {
+        console.log('Error is : '+JSON.stringify(error))
+      })
     this.showModal = false;
     this.carDetailsForm.reset();
   }
-
-
 }

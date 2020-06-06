@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { Md5 } from 'ts-md5';
 import { UserLogin } from 'src/app/shared/models/Customer';
+import { UserData } from 'src/app/shared/models/UserData';
 import { CustomerserviceService } from 'src/app/shared/services/customerservice.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -19,6 +20,7 @@ export class SignInComponent implements OnInit {
     Email:null,
     Password:null
   }
+  userdetails : UserData;
   constructor(private formbuilder : FormBuilder,
     private _createcustomer: CustomerserviceService,
     private router: Router) { }
@@ -31,24 +33,31 @@ export class SignInComponent implements OnInit {
     });
   }
 
+
+
   onSubmit(){
-    console.log(this.signinform.value)
     const md5 = new Md5();  
-var encPwd = md5.appendAsciiStr(this.signinform.controls.password.value).end();
-this.customer.Email = this.signinform.controls.userName.value;
-this.customer.Password = encPwd.toString();
+    var encPwd = md5.appendAsciiStr(this.signinform.controls.password.value).end();
+    this.customer.Email = this.signinform.controls.userName.value;
+    this.customer.Password = encPwd.toString();
 
-console.log(this.customer)
-
-this._createcustomer.ValidateUser(this.customer)
-.subscribe(
-  data => {
-    localStorage.setItem('UserEmail', this.customer.Email);
-    this.router.navigate(['/booking']);
-  },
-  (error:HttpErrorResponse) => {
-  console.log(error.error);
-alert(error.error);
+    this._createcustomer.ValidateUser(this.customer)
+    .subscribe(
+      data => {
+        this.userdetails = {
+          Email: this.customer.Email,
+          CarId : null,
+          PackageId : null,
+          DealerId : null,
+          BookingDate: null,
+          SlotTime : null
+        } 
+        localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
+        this.router.navigate(['/booking']);
+      },
+      (error:HttpErrorResponse) => {
+      console.log(error.error);
+    alert(error.error);
 
 });
 

@@ -5,6 +5,7 @@ import { default as _rollupMoment } from 'moment';
 import { FormControl } from '@angular/forms';
 import { SlotService } from 'src/app/shared/services/slot.service';
 import { Slot } from 'src/app/shared/models/slot';
+import { UserData } from 'src/app/shared/models/UserData'
 
 
 const moment = _rollupMoment || _moment;
@@ -20,29 +21,9 @@ export class SlotSelectionComponent implements OnInit {
   date1=null;
   Dealername;
   dealerId = 1;
+  userdetails : UserData
   slots: Slot[] = [];
-  // slots = [
-  //   {
-  //     id: 1,
-  //     time: '10:00',
-  //     slots: 4
-  //   },
-  //   {
-  //     id: 2,
-  //     time: '12:00',
-  //     slots: 4
-  //   },
-  //   {
-  //     id: 3,
-  //     time: '14:00',
-  //     slots: 4
-  //   },
-  //   {
-  //     id: 4,
-  //     time: '16:00',
-  //     slots: 4
-  //   },
-  // ];
+  
   constructor(private _router: Router,private slotservice:SlotService) { }
 
 
@@ -58,17 +39,9 @@ export class SlotSelectionComponent implements OnInit {
   maxDate = new Date(this.currentDate.getFullYear()+'/'+(this.currentDate.getMonth()+2)+'/'+this.currentDate.getDate())
 
   ngOnInit(): void {
-
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails'));
     console.log(this.selDate);
-      this.slotservice.getDealerName(this.dealerId).subscribe(Response=>{
-          console.log('dealerName'+Response);
-          this.Dealername=Response;
-      },
-      error=>{
-        alert('Error');
-        console.log('error'+JSON.stringify(error));
-      });
-
+    this.getDealerName();
   }
 
   dateSelected(event) {
@@ -78,29 +51,35 @@ export class SlotSelectionComponent implements OnInit {
     this.date = moment(event).format('YYYY-MM-DD');
     console.log(this.date);
 
-    this.slotservice.getslot(this.dealerId,this.date).subscribe((data:any[])=>{
-    //  console.log('data from api'+JSON.stringify(data));
-      this.slots = [];
-      for(let item of data)
-      {
-          this.slots.push(new Slot(item.DealerId,item.Date,item.SlotTime,item.SlotAvailable));    
-          //console.log(this.slotts);
-      }
-     // console.log('array...' + JSON.stringify(this.slotts));
+    this.slotservice.getslot(this.dealerId,this.date).subscribe(
+      (data:Slot[])=>{
+        console.log(data)
+        this.slots = data;
+        this.slots.forEach(element => {
+          element.SlotTime = element.SlotTime.toString().slice(0,-3)
+        });
     },
     error=>{
       console.log( 'error' + error);
       alert( 'Error' );
     });
-  
   }       
 
 
   bookService(SlotTime) {
-    //console.log(SlotTime);
-    // console.log('BookingDate',this.date1);
-    localStorage.setItem('BookingDate',this.date1);
-    localStorage.setItem('SlotTime', SlotTime);
+    this.userdetails.BookingDate = this.date1
+    this.userdetails.SlotTime = SlotTime
+    localStorage.setItem('UserDetails',JSON.stringify(this.userdetails));
     this._router.navigate(['../booking/summary']);
+  }
+
+  getDealerName(){
+    this.slotservice.getDealerName(this.dealerId).subscribe(Response=>{
+      this.Dealername=Response;
+  },
+  error=>{
+    alert('Error');
+    console.log('error'+JSON.stringify(error));
+  });
   }
 }

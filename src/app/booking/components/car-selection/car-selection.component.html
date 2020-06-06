@@ -10,7 +10,7 @@
         </div>
         <div class="row all-items-div">
             <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
-                <mat-card class="card-div" (click)="carSelected(item.name)">
+                <mat-card class="card-div" (click)="carSelected(item.CarId)">
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
                     <mat-card-header class="text-center  d-flex justify-content-center">
                         <mat-card-title>{{item.BrandName}}</mat-card-title>
