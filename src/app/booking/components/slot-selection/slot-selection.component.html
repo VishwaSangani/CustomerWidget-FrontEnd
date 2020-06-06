@@ -1,39 +1,42 @@
 <section class="main-container">
-    <div class="container">
-        <div class="title-div">
-          <h1 class="display-4">Dealer Name: {{Dealername}} </h1>
-            <h1 class="display-4">Select your prefered Date and Time </h1>
-        </div>
-        <div class="cal">
-          <mat-calendar class="calendar"
-          [selected] = "selDate"
-          [dateFilter]="myFilter"
-          [minDate]="minDate" 
-          [maxDate]="maxDate" 
-          (selectedChange)="dateSelected($event)" >
-        </mat-calendar>
-        </div>
-        <div class="dealer-list mt-3" *ngIf="date != null">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Sr. No</th>
-                    <th scope="col">Time</th>
-                    <th scope="col" class="text-right">Slots</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of slots;let i = index">
-                    <th scope="row">{{i+1}}</th>
-                    <td>{{item.SlotTime}}</td>
-                    <td class="text-right">{{item.SlotAvailable}}</td>
-                    <td class="text-right">
-                        <button mat-flat-button color="primary" (click)="bookService(item.SlotTime)">Book</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+  <div class="container">
+    <div class="title-div">
+      <h1 class="display-4">Dealer Name: {{dealerName}} </h1>
+      <h1 class="display-4">Select your prefered Date and Time </h1>
     </div>
+    <div class="cal">
+      <mat-calendar class="calendar" [selected]="selDate" [dateFilter]="myFilter" [minDate]="minDate"
+        [maxDate]="maxDate" (selectedChange)="dateSelected($event)">
+      </mat-calendar>
+    </div>
+    <div class="dealer-list mt-3" *ngIf="date != null">
+      <ng-container *ngIf="slots.length > 0; else noSlots">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Sr. No</th>
+              <th scope="col">Time</th>
+              <th scope="col" class="text-right">Slots</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of slots;let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{item.SlotTime}}</td>
+              <td class="text-right">{{item.SlotAvailable}}</td>
+              <td class="text-right">
+                <button mat-flat-button color="primary" (click)="bookService(item.SlotTime)">Book</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <ng-template #noSlots>
+        <div class="noSolts d-flex justify-content-center align-items-center">
+          <h4 class="text-center">No Slots avaliable for this date</h4>
+        </div>
+      </ng-template>
+    </div>
+  </div>
 </section>

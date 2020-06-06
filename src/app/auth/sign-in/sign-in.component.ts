@@ -48,6 +48,7 @@ export class SignInComponent implements OnInit {
             Email: this.customer.Email,
             CarId: null,
             PackageId: null,
+            PackageName: '',
             DealerId: null,
             BookingDate: null,
             SlotTime: null

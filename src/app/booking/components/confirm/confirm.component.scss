@@ -1,18 +1,51 @@
 .main-container{
     overflow: auto;
+    min-height: calc(100% - 64px);
     .title-div{
         margin-top: 30px;
+        h1{
+            font-size: 30px;
+            mat-icon{
+                height: 30px;
+                margin-right: 10px;
+            }
+        }
     }
     .all-data{
-        .data-center{
-            padding-left: 20%;
-        }
         label{
             font-weight: 500;
             font-size: 20px;
         }
         p{
             font-size: 18px;
+        }
+        mat-card{
+            margin-top: 20px;
+            padding-top: 30px;
+            mat-card-title{
+                font-size: 24px;
+                margin-bottom: 28px;
+            }
+            mat-card-subtitle{
+                font-size: 16px;
+                line-height: 24px;
+                label{
+                    font-size: inherit;
+                    line-height: inherit;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    .bill{
+        .amt-table{
+            mat-card-subtitle{
+                display: flex;
+                justify-content: space-between;
+            }
+            .bdr-bottom{
+                border-bottom: 1px solid black;
+            }
         }
     }
 }
