@@ -1,6 +1,6 @@
 import { MaterialModules } from './../shared/material';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookingRoutingModule } from './booking-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -34,6 +34,6 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [MatDatepickerModule]
+  providers: [MatDatepickerModule,DatePipe]
 })
 export class BookingModule { }

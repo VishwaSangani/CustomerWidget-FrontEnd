@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Summary, PostSummary } from 'src/app/shared/models/Summary';
+import { UserData } from 'src/app/shared/models/UserData';
+import { SummaryService } from 'src/app/shared/services/summary.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-confirm',
@@ -6,25 +12,78 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent implements OnInit {
+  userdetails : UserData;
 
-  constructor() { }
+  constructor(
+    private  summaryservice : SummaryService,
+    private router: Router,
+    private datePipe: DatePipe
+  ) { }
 
   details = {
-    name: 'Dev Chhaniyara',
-    package: 'Basic Package',
-    dealer: 'All-Star Service',
-    address: 'Some random address',
-    date: '24/5/2020',
-    time: '14:00',
-    services: 'Washing',
-    price: 500,
+    customerName: '',
+    package: '',
+    dealer: '',
+    address: '',
+    date: null,
+    time: null,
+    services: '',
+    price: null,
+    contact: ''
   };
 
   ngOnInit(): void {
-    //console.log(localStorage.getItem('SlotTime'));
-    //console.log(localStorage.getItem('BookingDate'));
-    this.details.time = localStorage.getItem('SlotTime');
-    this.details.date = localStorage.getItem('BookingDate');
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails'));
+    this.details.time = this.userdetails.SlotTime,
+    this.details.date = this.userdetails.BookingDate,
+    this.loadSummary();
   }
+
+  loadSummary()
+{
+  let summary : Summary = {
+    Email : this.userdetails.Email,
+    DealerId : this.userdetails.DealerId,
+    CarId : this.userdetails.CarId,
+    PackageId : this.userdetails.PackageId,
+  
+  }
+    console.log(summary)
+    this.summaryservice.getSummary(summary).subscribe(
+      data => {
+        this.details.customerName = data[0].FirstName + " "+ data[0].LastName;
+        this.details.dealer = data[1].DealerName;
+        this.details.address = data[1].Address + " "+ data[1].City;
+        this.details.package = data[1].ServiceName;
+        this.details.services = data[1].Description;
+        this.details.price = data[1].Price;
+        this.details.contact = data[1].ContactNo;
+
+      },
+      error => {
+        console.log('Error is :'+ JSON.stringify(error))
+      })
+
+}
+
+save()
+{
+  let postsummary : PostSummary = {
+    Email : this.userdetails.Email,
+    DealerId : this.userdetails.DealerId,
+    CarId : this.userdetails.CarId,
+    PackageId : this.userdetails.PackageId,
+    dateOfbooking: this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
+    slotTime: this.details.time
+  }
+
+  this.summaryservice.postSummary(postsummary).subscribe(
+    data => {
+      this.router.navigate(['/booking']);
+    },
+    (error:HttpErrorResponse) => {
+    alert(error.error);
+    });
+}
 
 }
