@@ -6,5 +6,13 @@
     }
 }
 .card-div{
-    min-height:400px;
+    min-height:350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    img{
+        padding-top: 20px;
+        height: 200px;
+        width: auto;
+    }
 }

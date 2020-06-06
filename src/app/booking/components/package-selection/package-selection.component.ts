@@ -9,32 +9,31 @@ import { UserData } from 'src/app/shared/models/UserData';
 })
 export class PackageSelectionComponent implements OnInit {
 
-  userdetails : UserData
+  userdetails: UserData;
   packages = [
     {
-      name: 'Basic Package',
+      name: 'Basic',
       des: 'Does all the basic stuff'
     },
     {
-      name: 'Premium Package',
+      name: 'Premium',
       des: 'Does all the basic stuff plus some extra to make your car go wroom'
     },
     {
-      name: 'Executive Package',
+      name: 'Executive',
       des: 'Sit back and relax as we do everything we can to make your car just as a new one'
     }
   ];
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
-    this.userdetails = JSON.parse(localStorage.getItem('UserDetails')) 
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails'))
   }
-
+  // packages$ = getPackages();
   packageSelected(item: string) {
     console.log(`Selected Package: ${item}`);
-    this.userdetails.PackageId = 1 //Add the service id
-    localStorage.setItem('UserDetails',JSON.stringify(this.userdetails));
-    this._router.navigate(['../booking/dealerSelection']);
+    this.userdetails.PackageId = item; // Add the service id
+    // localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
+    // this._router.navigate(['../booking/dealerSelection']);
   }
-
 }

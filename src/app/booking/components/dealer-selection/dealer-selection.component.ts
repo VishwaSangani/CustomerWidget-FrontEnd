@@ -9,7 +9,7 @@ import { UserData } from 'src/app/shared/models/UserData';
 })
 export class DealerSelectionComponent implements OnInit {
 
-  userdetails : UserData
+  userdetails: UserData
   dealerList = [
     {
       id: 1,
@@ -57,11 +57,11 @@ export class DealerSelectionComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
-    this.userdetails = JSON.parse(localStorage.getItem('UserDetails')) 
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails'))
   }
   dealerSelected(id) {
     this.userdetails.DealerId = id;
-    localStorage.setItem('UserDetails',JSON.stringify(this.userdetails));
+    localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
     this._router.navigate(['../booking/slotSelection']);
   }
 }

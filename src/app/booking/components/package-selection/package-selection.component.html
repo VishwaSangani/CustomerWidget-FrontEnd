@@ -2,19 +2,20 @@
     <div class="container">
         <div class="row title-div">
             <div class="d-flex flex-row">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 40px;">assignment </mat-icon>&nbsp;&nbsp;
+                <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 40px;">assignment
+                </mat-icon>&nbsp;&nbsp;
                 <h1 class="display-4 p-2">Select a Service Package</h1>
             </div>
         </div>
         <div class="row all-items-div">
             <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of packages">
                 <mat-card class="card-div" (click)="packageSelected(item.name)">
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <img mat-card-image src="../../../../assets/images/{{item.name}}.png" alt="Photo of a Shiba Inu">
                     <mat-card-header class="text-center  d-flex justify-content-center">
                         <mat-card-title>{{item.name}}</mat-card-title>
                         <mat-card-subtitle>{{item.des}}</mat-card-subtitle>
-                      </mat-card-header>
-                  </mat-card>
+                    </mat-card-header>
+                </mat-card>
             </div>
         </div>
     </div>

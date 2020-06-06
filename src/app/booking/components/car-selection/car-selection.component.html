@@ -11,7 +11,7 @@
         <div class="row all-items-div">
             <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
                 <mat-card class="card-div" (click)="carSelected(item.CarId)">
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <img mat-card-image src="../../../../assets/images/car.svg" alt="Photo of Car">
                     <mat-card-header class="text-center  d-flex justify-content-center">
                         <mat-card-title>{{item.BrandName}}</mat-card-title>
                         <mat-card-subtitle>{{item.Model}}</mat-card-subtitle>
@@ -22,12 +22,9 @@
         </div>
     </div>
 </section>
-
-
-
-
+<!-- Add Car Model -->
 <div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header p-0">
             <mat-toolbar color="primary">

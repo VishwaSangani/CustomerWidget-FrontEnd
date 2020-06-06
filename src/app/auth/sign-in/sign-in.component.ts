@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Md5 } from 'ts-md5';
 import { UserLogin } from 'src/app/shared/models/Customer';
 import { UserData } from 'src/app/shared/models/UserData';
@@ -15,53 +15,53 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class SignInComponent implements OnInit {
 
-  signinform:FormGroup;
-  customer:UserLogin = {
-    Email:null,
-    Password:null
+  signinform: FormGroup;
+  customer: UserLogin = {
+    Email: null,
+    Password: null
   }
-  userdetails : UserData;
-  constructor(private formbuilder : FormBuilder,
+  userdetails: UserData;
+  constructor(private formbuilder: FormBuilder,
     private _createcustomer: CustomerserviceService,
     private router: Router) { }
-  hide =true
+  hide = true
 
   ngOnInit(): void {
     this.signinform = this.formbuilder.group({
-      userName:['',Validators.required],
-      password:['',Validators.required]
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
 
 
-  onSubmit(){
-    const md5 = new Md5();  
+  onSubmit() {
+    const md5 = new Md5();
     var encPwd = md5.appendAsciiStr(this.signinform.controls.password.value).end();
     this.customer.Email = this.signinform.controls.userName.value;
     this.customer.Password = encPwd.toString();
 
     this._createcustomer.ValidateUser(this.customer)
-    .subscribe(
-      data => {
-        this.userdetails = {
-          Email: this.customer.Email,
-          CarId : null,
-          PackageId : null,
-          DealerId : null,
-          BookingDate: null,
-          SlotTime : null
-        } 
-        localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
-        this.router.navigate(['/booking']);
-      },
-      (error:HttpErrorResponse) => {
-      console.log(error.error);
-    alert(error.error);
+      .subscribe(
+        data => {
+          this.userdetails = {
+            Email: this.customer.Email,
+            CarId: null,
+            PackageId: null,
+            DealerId: null,
+            BookingDate: null,
+            SlotTime: null
+          }
+          localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
+          this.router.navigate(['/booking']);
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
+          alert(error.error);
 
-});
-
-}
+        });
 
   }
+
+}
 
