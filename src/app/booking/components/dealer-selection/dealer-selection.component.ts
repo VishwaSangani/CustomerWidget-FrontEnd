@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { UserData } from 'src/app/shared/models/UserData';
 
 @Component({
   selector: 'app-dealer-selection',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DealerSelectionComponent implements OnInit {
 
+  userdetails : UserData
   dealerList = [
     {
       id: 1,
@@ -55,9 +57,11 @@ export class DealerSelectionComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails')) 
   }
   dealerSelected(id) {
-    console.log(id);
+    this.userdetails.DealerId = id;
+    localStorage.setItem('UserDetails',JSON.stringify(this.userdetails));
     this._router.navigate(['../booking/slotSelection']);
   }
 }

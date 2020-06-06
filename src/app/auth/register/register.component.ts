@@ -84,44 +84,44 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm.controls.address.value)
     console.log(this.registerForm.value)
   // var md5 = require('md5');
-  const md5 = new Md5();
+    const md5 = new Md5();
  
-var encPwd = md5.appendAsciiStr(this.registerForm.controls.password.value).end();
-this.customer.FirstName = this.registerForm.controls.firstName.value;
-this.customer.LastName = this.registerForm.controls.lastName.value;
-this.customer.Email = this.registerForm.controls.emailId.value;
-this.customer.Password = encPwd.toString();
-this.customer.ContactNo = this.registerForm.controls.mobileNumber.value;
-if(this.registerForm.controls.address2.value === "")
-{
-  this.customer.Address = this.registerForm.controls.address.value + ", " +
-                          this.registerForm.controls.city.value + ", " +
-                          this.registerForm.controls.state.value + "-" +
-                          this.registerForm.controls.zipcode.value;  
-}
-else{
-  this.customer.Address = this.registerForm.controls.address.value + ", " +
-                          this.registerForm.controls.address2.value + ", " +
-                          this.registerForm.controls.city.value + ", " +
-                          this.registerForm.controls.state.value + "-" +
-                          this.registerForm.controls.zipcode.value;  
-}
+    var encPwd = md5.appendAsciiStr(this.registerForm.controls.password.value).end();
+    this.customer.FirstName = this.registerForm.controls.firstName.value;
+    this.customer.LastName = this.registerForm.controls.lastName.value;
+    this.customer.Email = this.registerForm.controls.emailId.value;
+    this.customer.Password = encPwd.toString();
+    this.customer.ContactNo = this.registerForm.controls.mobileNumber.value;
+    if(this.registerForm.controls.address2.value === "")
+    {
+      this.customer.Address = this.registerForm.controls.address.value + ", " +
+                              this.registerForm.controls.city.value + ", " +
+                              this.registerForm.controls.state.value + "-" +
+                              this.registerForm.controls.zipcode.value;  
+    }
+    else{
+      this.customer.Address = this.registerForm.controls.address.value + ", " +
+                              this.registerForm.controls.address2.value + ", " +
+                              this.registerForm.controls.city.value + ", " +
+                              this.registerForm.controls.state.value + "-" +
+                              this.registerForm.controls.zipcode.value;  
+    }
 
-console.log(this.customer);
-    this._createcustomer.createCustomer(this.customer)
-    .subscribe(
-      data => {
-        alert(data);
-        console.log(data+"DATA");
-        console.log('Customer added!');
-        this.registerForm.reset();
-        this.router.navigate(['/signin']);
-      },
-      (error:HttpErrorResponse) => {
-      console.log(error.error);
-    alert(error.error);
-    this.registerForm.controls.emailId.reset();
-    });
+    console.log(this.customer);
+        this._createcustomer.createCustomer(this.customer)
+        .subscribe(
+          data => {
+            alert(data);
+            console.log(data+"DATA");
+            console.log('Customer added!');
+            this.registerForm.reset();
+            this.router.navigate(['/signin']);
+          },
+          (error:HttpErrorResponse) => {
+          console.log(error.error);
+        alert(error.error);
+        this.registerForm.controls.emailId.reset();
+        });
 
     }
 

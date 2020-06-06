@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { UserData } from 'src/app/shared/models/UserData';
 
 @Component({
   selector: 'app-package-selection',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PackageSelectionComponent implements OnInit {
 
+  userdetails : UserData
   packages = [
     {
       name: 'Basic Package',
@@ -25,10 +27,13 @@ export class PackageSelectionComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails')) 
   }
 
   packageSelected(item: string) {
     console.log(`Selected Package: ${item}`);
+    this.userdetails.PackageId = 1 //Add the service id
+    localStorage.setItem('UserDetails',JSON.stringify(this.userdetails));
     this._router.navigate(['../booking/dealerSelection']);
   }
 

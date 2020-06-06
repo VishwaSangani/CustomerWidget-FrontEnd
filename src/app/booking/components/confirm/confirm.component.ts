@@ -21,6 +21,10 @@ export class ConfirmComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    //console.log(localStorage.getItem('SlotTime'));
+    //console.log(localStorage.getItem('BookingDate'));
+    this.details.time = localStorage.getItem('SlotTime');
+    this.details.date = localStorage.getItem('BookingDate');
   }
 
 }
