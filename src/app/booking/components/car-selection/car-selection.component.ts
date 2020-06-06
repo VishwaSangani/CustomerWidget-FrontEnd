@@ -21,7 +21,6 @@ export class CarSelectionComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.userdetails = JSON.parse(localStorage.getItem('UserDetails'));
     console.log(this.userdetails.Email)
     this.getAllCars();
@@ -57,7 +56,7 @@ export class CarSelectionComponent implements OnInit {
     this.carservice.getCars(usercar).subscribe(
       data => {
         this.carList = data;
-        console.table(data)
+        console.table(data);
       },
       error => {
         console.log('Error is :' + JSON.stringify(error))

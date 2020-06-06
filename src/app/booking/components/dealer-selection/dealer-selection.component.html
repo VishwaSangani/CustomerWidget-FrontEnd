@@ -1,31 +1,38 @@
 <section class="main-container">
-    <div class="container">
-        <div class="row title-row">
-            <h1 class="display-4">Dealer Selection</h1>
-        </div>
-        <div class="dealer-list-table">
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Sr.No</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Serivces</th>
-                    <th scope="col" class="tab-w-5">Price</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of dealerList">
-                    <th scope="row">{{item.id}}</th>
-                    <td>{{item.name}}</td>
-                    <td>{{item.service}}</td>
-                    <td class="tab-w-5 text-right">{{item.price | currency: 'INR' }}</td>
-                    <td class="d-flex justify-content-end">
-                        <button class="select-btn" mat-flat-button color="primary" (click)="dealerSelected(item.id)">Select Package</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+  <div class="container">
+    <div class="row title-row">
+      <h1 class="display-4">Dealer Selection</h1>
     </div>
+    <div class="dealer-list-table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Sr. No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Serivces</th>
+            <th scope="col" class="tab-w-5">Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dealerList; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{item.DealerName}}</td>
+            <td>{{item.Address}}</td>
+            <td>{{item.City}}</td>
+            <td>{{item.ContactNo}}</td>
+            <td>{{item.Description}}</td>
+            <td class="tab-w-5 text-right">{{item.Price | currency: 'INR' }}</td>
+            <td class="d-flex justify-content-end">
+              <button class="select-btn" mat-flat-button color="primary" (click)="dealerSelected(item.DealerId)">Select
+                Package</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>

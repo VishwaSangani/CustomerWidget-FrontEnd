@@ -21,6 +21,10 @@ export class CarServiceService {
   }
 
   getAllPackages(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/Getpackages`);
+    return this.http.get<any[]>(`${this.baseUrl}GetServicePackage`);
+  }
+
+  getDealers(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}GetDealerList?packageId=${id}`);
   }
 }

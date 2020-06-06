@@ -1,7 +1,8 @@
 export class UserData {
     Email: string;
     CarId: number;
-    PackageId: string;
+    PackageId: number;
+    PackageName: string;
     DealerId: number;
     BookingDate: string;
     SlotTime: string;

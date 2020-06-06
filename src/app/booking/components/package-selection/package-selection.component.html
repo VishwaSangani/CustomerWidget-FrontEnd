@@ -9,8 +9,8 @@
         </div>
         <div class="row all-items-div">
             <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of packages">
-                <mat-card class="card-div" (click)="packageSelected(item.name)">
-                    <img mat-card-image src="../../../../assets/images/{{item.name}}.png" alt="Photo of a Shiba Inu">
+                <mat-card class="card-div" (click)="packageSelected(item.name, item.id)">
+                    <img mat-card-image src="../../../../assets/images/{{item.name}}.png" [alt]=item.name>
                     <mat-card-header class="text-center  d-flex justify-content-center">
                         <mat-card-title>{{item.name}}</mat-card-title>
                         <mat-card-subtitle>{{item.des}}</mat-card-subtitle>

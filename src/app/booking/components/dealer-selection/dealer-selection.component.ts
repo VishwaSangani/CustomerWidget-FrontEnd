@@ -1,5 +1,8 @@
+import { SubSink } from 'Subsink';
+import { from } from 'rxjs';
+import { CarServiceService } from 'src/app/shared/services/car-service.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserData } from 'src/app/shared/models/UserData';
 
 @Component({
@@ -7,61 +10,35 @@ import { UserData } from 'src/app/shared/models/UserData';
   templateUrl: './dealer-selection.component.html',
   styleUrls: ['./dealer-selection.component.scss']
 })
-export class DealerSelectionComponent implements OnInit {
+export class DealerSelectionComponent implements OnInit, OnDestroy {
+  private sub = new SubSink();
+  // tslint:disable-next-line: variable-name
+  constructor(private _router: Router, private _http: CarServiceService) { }
 
-  userdetails: UserData
-  dealerList = [
-    {
-      id: 1,
-      name: 'All-Star Service',
-      service: 'Washing',
-      price: 500
-    },
-    {
-      id: 2,
-      name: 'Flashpoint Service',
-      service: 'Washing',
-      price: 500
-    },
-    {
-      id: 3,
-      name: 'Action Service',
-      service: 'Washing',
-      price: 500
-    },
-    {
-      id: 4,
-      name: 'Astonish Service',
-      service: 'Washing',
-      price: 500
-    },
-    {
-      id: 5,
-      name: 'Red Hood Service',
-      service: 'Washing',
-      price: 500
-    },
-    {
-      id: 6,
-      name: 'Atlantis Service',
-      service: 'Washing',
-      price: 500
-    },
-    {
-      id: 7,
-      name: 'Titans Service',
-      service: 'Washing',
-      price: 500
-    }
-  ];
-  constructor(private _router: Router) { }
-
+  userdetails: UserData;
+  dealerList;
   ngOnInit(): void {
-    this.userdetails = JSON.parse(localStorage.getItem('UserDetails'))
+    this.userdetails = JSON.parse(localStorage.getItem('UserDetails'));
+    this.getPackages();
   }
+
+  getPackages() {
+    const dealerList$ = this._http.getDealers(this.userdetails.PackageId)
+      .subscribe(item => {
+        console.table(item);
+        this.dealerList = item;
+      });
+    this.sub.add(dealerList$);
+  }
+
   dealerSelected(id) {
+    console.log(id);
     this.userdetails.DealerId = id;
     localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
     this._router.navigate(['../booking/slotSelection']);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
