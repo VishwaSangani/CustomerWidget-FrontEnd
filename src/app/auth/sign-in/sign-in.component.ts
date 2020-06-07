@@ -19,12 +19,12 @@ export class SignInComponent implements OnInit {
   customer: UserLogin = {
     Email: null,
     Password: null
-  }
+  };
   userdetails: UserData;
   constructor(private formbuilder: FormBuilder,
     private _createcustomer: CustomerserviceService,
     private router: Router) { }
-  hide = true
+  hide = true;
 
   ngOnInit(): void {
     this.signinform = this.formbuilder.group({
@@ -48,6 +48,7 @@ export class SignInComponent implements OnInit {
             Email: this.customer.Email,
             CarId: null,
             PackageId: null,
+            PackageName: null,
             DealerId: null,
             BookingDate: null,
             SlotTime: null
