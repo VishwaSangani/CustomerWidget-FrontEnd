@@ -82,7 +82,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-          <button type="button" class="btn btn-primary" (click) = "addCar()">Add Car</button>
+          <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click) = "addCar()">Add Car</button>
         </div>
       </div>
     </div>

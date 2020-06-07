@@ -172,7 +172,7 @@
                   </div>
               </form>
               <div class="row d-flex flex-row justify-content-around">
-                  <button mat-raised-button color="primary" class="button-submit"  (click)="onSubmit()">
+                  <button mat-raised-button color="primary" [disabled]="registerForm.invalid" class="button-submit"  (click)="onSubmit()">
                       Register
                   </button>
                   <button mat-raised-button color="accent" class="button-submit mx-3"  routerLink="/signin">

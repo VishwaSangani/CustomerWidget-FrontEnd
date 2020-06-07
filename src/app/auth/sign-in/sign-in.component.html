@@ -18,6 +18,9 @@
                   <mat-error *ngIf="signinform.get('userName').hasError('required')">
                     This field is required!
                   </mat-error>
+                  <mat-error *ngIf="signinform.get('userName').hasError('email')">
+                    Please enter valid email
+                  </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width" appearance="outline">
@@ -40,7 +43,7 @@
           <p class="text-center" style="font-size: 15px;">
             <a mat-button routerLink="../forgetPassword">Forgot Password</a>
           </p>
-          <button mat-flat-button color="primary" (click)="onSubmit()">Login</button>           
+          <button mat-flat-button color="primary" [disabled]="signinform.invalid" (click)="onSubmit()">Login</button>           
         </div>
       </div>
       
