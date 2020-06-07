@@ -1,12 +1,32 @@
 <section class="main-container">
     <div class="container">
         <div class="title-div">
-            <h1 class="text-center display-4">Summary</h1>
+            <h1 class="display-4">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">assignment</mat-icon>Summary
+            </h1>
         </div>
         <div class="all-data">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-12 data-center">
-                    <label for="" class="mat-subheading-2 m-0">Customer Name</label>
+                    <mat-card class="card-div">
+                        <mat-card-header class="d-flex">
+                            <mat-card-title>{{details.customerName}}</mat-card-title>
+                            <mat-card-subtitle><label><b>Car:</b></label> {{details.carName}}</mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Registration Number:</b></label> {{details.CarNo}}
+                            </mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Dealer Name:</b></label> {{details.dealer}}
+                            </mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Dealer Contact: </b></label> {{details.contact}}
+                            </mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Address:</b></label> {{details.address}}</mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Package:</b></label> {{details.package}}</mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Date:</b></label> {{details.date}}</mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Time:</b></label> {{details.time}}</mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Services:</b></label> {{details.services}}
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+                    <!-- <label for="" class="mat-subheading-2 m-0">Customer Name</label>
                     <p>{{details.customerName}}</p>
                     <label for="" class="mat-subheading-2 m-0">Dealer Name</label>
                     <p>{{details.dealer}}</p>
@@ -15,24 +35,43 @@
                     <label for="" class="mat-subheading-2 m-0">Address</label>
                     <p>{{details.address}}</p>
                     <label for="" class="mat-subheading-2 m-0">Package</label>
-                    <p>{{details.package}}</p>
-                   
+                    <p>{{details.package}}</p> -->
+
                 </div>
-                <div class="col-md-6 col-12 data-center">
-                    <label for="" class="mat-subheading-2 m-0">Date</label>
+                <div class="col-md-6 col-12 data-center bill">
+                    <mat-card class="card-div">
+                        <mat-card-header class="d-flex">
+                            <mat-card-title>Bill</mat-card-title>
+                        </mat-card-header>
+                        <div class="amt-table">
+                            <mat-card-subtitle><label> &nbsp;&nbsp;&nbsp;Primary Amount</label>
+                                <p>{{ details.price  | currency:'INR' }}</p>
+                            </mat-card-subtitle>
+                            <mat-card-subtitle class="bdr-bottom"><label>+ Additional Costs</label>
+                                <p>{{ 0  | currency:'INR' }}</p>
+                            </mat-card-subtitle>
+                            <mat-card-subtitle><label><b> &nbsp;&nbsp;&nbsp;Total Amount</b></label>
+                                <p><b>{{ details.price  | currency:'INR' }}</b></p>
+
+                            </mat-card-subtitle>
+                            <button class="select-btn btn-block" mat-flat-button color="primary"
+                                (click)="save()">Confirm
+                                Booking</button>
+                        </div>
+                    </mat-card>
+                    <!-- <label for="" class="mat-subheading-2 m-0">Date</label>
                     <p>{{details.date}}</p>
                     <label for="" class="mat-subheading-2 m-0">Time</label>
                     <p>{{details.time}}</p>
                     <label for="" class="mat-subheading-2 m-0">Services</label>
                     <p>{{details.services}}</p>
                     <label for="" class="mat-subheading-2 m-0">Cost</label>
-                    <p>{{ details.price  | currency:'INR' }}</p>
+                    <p>{{ details.price  | currency:'INR' }}</p> -->
                 </div>
             </div>
         </div>
-        <div class="row d-flex justify-content-center mt-3">
-            <button class="select-btn" mat-flat-button color="primary" (click)="save()"
-            >Confirm Booking</button>
-        </div>
+        <!-- <div class="row d-flex justify-content-center mt-3">
+            <button class="select-btn" mat-flat-button color="primary" (click)="save()">Confirm Booking</button>
+        </div> -->
     </div>
 </section>
