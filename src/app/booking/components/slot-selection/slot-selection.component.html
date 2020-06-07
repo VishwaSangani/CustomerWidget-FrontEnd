@@ -10,7 +10,7 @@
       </mat-calendar>
     </div>
     <div class="dealer-list mt-3" *ngIf="date != null">
-      <ng-container *ngIf="slots.length > 0; else noSlots">
+      <ng-container *ngIf="slotCount > 0; else noSlots">
         <table class="table">
           <thead>
             <tr>

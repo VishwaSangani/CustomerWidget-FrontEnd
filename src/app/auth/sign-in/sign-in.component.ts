@@ -16,6 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class SignInComponent implements OnInit {
 
   signinform: FormGroup;
+  userError : string;
   customer: UserLogin = {
     Email: null,
     Password: null
@@ -28,7 +29,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.signinform = this.formbuilder.group({
-      userName: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
@@ -54,12 +55,12 @@ export class SignInComponent implements OnInit {
             SlotTime: null
           }
           localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
+          this.userError = ""
           this.router.navigate(['/booking']);
         },
         (error: HttpErrorResponse) => {
-          console.log(error.error);
-          alert(error.error);
-
+          
+          this.userError = error.error;
         });
 
   }

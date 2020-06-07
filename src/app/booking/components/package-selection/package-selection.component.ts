@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserData } from 'src/app/shared/models/UserData';
 import { SubSink } from 'Subsink';
+import { utf8Encode } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-package-selection',
@@ -42,7 +43,7 @@ export class PackageSelectionComponent implements OnInit, OnDestroy {
 
   callOnInit() {
     this.sub.add(this.packages$.subscribe(item => {
-      for (let i = 0; item.length; i++) {
+      for (let i = 0; i < item.length ; i++) {
         this.packages[i].id = item[i].ServiceId;
         this.packages[i].name = item[i].ServiceName;
       }

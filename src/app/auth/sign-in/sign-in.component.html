@@ -11,7 +11,7 @@
                 <mat-form-field class="example-full-width" appearance="outline">
                   <mat-label>Username</mat-label>
                   <button mat-icon-button matPrefix style="font-size: 20px;"><mat-icon style="margin-left: 5px;">account_circle</mat-icon></button>
-                  <input matInput #username type="text" formControlName="userName" style="padding-left: 10px;">
+                  <input matInput #username type="email" formControlName="userName" style="padding-left: 10px;">
                   <button mat-button *ngIf="username.value" matSuffix mat-icon-button aria-label="Clear" (click)="signinform.get('userName').reset()">
                     <mat-icon style="font-size: small;">close</mat-icon>
                   </button>
@@ -31,6 +31,8 @@
                     This field is required!
                   </mat-error>
                 </mat-form-field>
+                <p *ngIf="userError" style="color: red;">{{userError}} </p>
+                
           </form>  
           <p class="text-center" style="font-size: 15px;">
             Don't have an account? <a mat-button routerLink="../register">Register Here</a>

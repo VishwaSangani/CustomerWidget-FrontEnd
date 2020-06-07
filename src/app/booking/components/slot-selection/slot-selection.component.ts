@@ -21,6 +21,7 @@ export class SlotSelectionComponent implements OnInit {
   dealerId;
   userdetails: UserData;
   slots: Slot[];
+  slotCount : number = 0;
   currentDate = new Date();
   selDate = new Date(this.currentDate.getFullYear() + '/' + (this.currentDate.getMonth() + 1) + '/' + this.currentDate.getDate());
   minDate = new Date(this.currentDate.getFullYear() + '/' + (this.currentDate.getMonth() + 1) + '/' + this.currentDate.getDate());
@@ -55,13 +56,13 @@ export class SlotSelectionComponent implements OnInit {
         this.slots.forEach(element => {
           element.SlotTime = element.SlotTime.toString().slice(0, -3);
         });
+        this.slotCount = this.slots.length
       },
       error => {
         console.log('error' + error);
         alert('Error');
       });
   }
-
 
   bookService(SlotTime) {
     this.userdetails.BookingDate = this.date1;

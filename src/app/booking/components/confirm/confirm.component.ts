@@ -6,6 +6,7 @@ import { SummaryService } from 'src/app/shared/services/summary.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-confirm',
@@ -18,7 +19,8 @@ export class ConfirmComponent implements OnInit {
   constructor(
     private summaryservice: SummaryService,
     private router: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private _snackbar :MatSnackBar
   ) { }
 
   details: DisplaySummary = {
@@ -51,6 +53,7 @@ export class ConfirmComponent implements OnInit {
     };
     this.summaryservice.getSummary(summary).subscribe(
       data => {
+        console.log(data)
         this.details.customerName = data[0].FirstName + ' ' + data[0].LastName;
         this.details.carName = data[0].BrandName + ' ' + data[0].Model;
         this.details.CarNo = data[0].RegistrationNo;
@@ -79,11 +82,26 @@ export class ConfirmComponent implements OnInit {
 
     this.summaryservice.postSummary(postsummary).subscribe(
       () => {
-        this.router.navigate(['/booking']);
+        this.openSnackbar("Your booking has been confirmed!!")
+        setTimeout(()=>{
+          this.router.navigate(['/booking']);
+        }, 3000)
+       
       },
       (error: HttpErrorResponse) => {
-        alert(error.error);
+        console.log(error.error)
+        this.openSnackbar(error.error);
+        setTimeout(()=>{
+          this.router.navigate(['/booking']);
+        }, 3000)
       });
   }
 
+  openSnackbar(message:string){
+    this._snackbar.open(message,null,{
+      duration: 3000,
+      horizontalPosition:'center',
+      verticalPosition:'bottom',
+    });
+}
 }

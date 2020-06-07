@@ -12,6 +12,7 @@ import { SlotSelectionComponent } from './components/slot-selection/slot-selecti
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { ConfirmComponent } from './components/confirm/confirm.component';
 
 
@@ -32,7 +33,8 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     MaterialModules,
     MatNativeDateModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [MatDatepickerModule,DatePipe]
 })

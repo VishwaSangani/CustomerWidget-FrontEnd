@@ -4,7 +4,9 @@ import { FormGroup, Validator, FormBuilder, Validators } from '@angular/forms';
 import { CarServiceService } from 'src/app/shared/services/car-service.service';
 import { CarDetails, Car } from 'src/app/shared/models/Car'
 import { UserData } from 'src/app/shared/models/UserData';
+import { MatSnackBar,MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
+ 
 @Component({
   selector: 'app-car-selection',
   templateUrl: './car-selection.component.html',
@@ -12,7 +14,7 @@ import { UserData } from 'src/app/shared/models/UserData';
 })
 export class CarSelectionComponent implements OnInit {
 
-  constructor(private _router: Router, private fb: FormBuilder, private carservice: CarServiceService) { }
+  constructor(private _router: Router, private fb: FormBuilder, private carservice: CarServiceService, private _snackbar : MatSnackBar ) { }
 
   showModal: Boolean = false;
   carDetailsForm: FormGroup
@@ -59,7 +61,7 @@ export class CarSelectionComponent implements OnInit {
         console.table(data);
       },
       error => {
-        console.log('Error is :' + JSON.stringify(error))
+        this.openSnackbar(JSON.stringify(error.error))
       })
   }
 
@@ -69,13 +71,21 @@ export class CarSelectionComponent implements OnInit {
     console.log(car)
     this.carservice.addCar(car).subscribe(
       data => {
-        alert("Added the car!")
+        this.openSnackbar("Added the car!")
         this.getAllCars();
       },
       error => {
-        console.log('Error is : ' + JSON.stringify(error))
+        this.openSnackbar(error.error)
       })
     this.showModal = false;
     this.carDetailsForm.reset();
+  }
+
+  openSnackbar(message:string){
+      this._snackbar.open(message,null,{
+        duration: 5000,
+        horizontalPosition:'center',
+        verticalPosition:'bottom',
+      });
   }
 }
