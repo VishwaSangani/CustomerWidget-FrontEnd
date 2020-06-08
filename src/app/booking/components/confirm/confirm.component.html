@@ -75,3 +75,31 @@
         </div> -->
     </div>
 </section>
+
+
+
+<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header p-0">
+            <mat-toolbar color="primary">
+                <mat-toolbar-row>
+                    <h5 class="modal-title">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </mat-toolbar-row>
+              </mat-toolbar>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: medium;">
+            Thank you for booking your appointment with us!<br>
+            Your order Id is <strong>{{appointmentId}}</strong>. See you on {{details.date}} at {{details.time}}
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

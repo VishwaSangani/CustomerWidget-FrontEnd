@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AppointmentService } from 'src/app/shared/services/appointment.service';
 
 @Component({
   selector: 'app-confirm',
@@ -15,12 +16,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ConfirmComponent implements OnInit {
   userdetails: UserData;
+  showModal = true;
+  appointmentId;
 
   constructor(
     private summaryservice: SummaryService,
     private router: Router,
     private datePipe: DatePipe,
-    private _snackbar :MatSnackBar
+    private _snackbar :MatSnackBar,
+    private appointment : AppointmentService
   ) { }
 
   details: DisplaySummary = {
@@ -82,11 +86,7 @@ export class ConfirmComponent implements OnInit {
 
     this.summaryservice.postSummary(postsummary).subscribe(
       () => {
-        this.openSnackbar("Your booking has been confirmed!!")
-        setTimeout(()=>{
-          this.router.navigate(['/booking']);
-        }, 3000)
-       
+        this.bookAppointment();
       },
       (error: HttpErrorResponse) => {
         console.log(error.error)
@@ -97,6 +97,23 @@ export class ConfirmComponent implements OnInit {
       });
   }
 
+  bookAppointment(){
+    let dataObject = {
+      Email: this.userdetails.Email,
+      CarId : this.userdetails.CarId,
+      Slotdate : this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
+      Slottime : this.userdetails.SlotTime
+    }
+    console.log(dataObject);
+    this.appointment.getAppointmentId(dataObject).subscribe(
+      data =>{
+        this.showModal = true;
+        console.log(data)
+        this.appointmentId = data
+      }
+    )
+
+  }
   openSnackbar(message:string){
     this._snackbar.open(message,null,{
       duration: 3000,
@@ -104,4 +121,11 @@ export class ConfirmComponent implements OnInit {
       verticalPosition:'bottom',
     });
 }
+
+closeModal() {
+  this.showModal = false;
+}
+
+
+
 }
