@@ -9,10 +9,10 @@
           <tr>
             <th scope="col">Sr. No</th>
             <th scope="col">Name</th>
-            <th scope="col">Address</th>
+            <th class="diff" scope="col">Address</th>
             <th scope="col">City</th>
             <th scope="col">Contact No.</th>
-            <th scope="col">Serivces</th>
+            <th class="diff" scope="col">Serivces</th>
             <th scope="col" class="tab-w-5">Price</th>
             <th></th>
           </tr>
@@ -21,14 +21,14 @@
           <tr *ngFor="let item of dealerList; let i = index">
             <td scope="row">{{i + 1}}</td>
             <td>{{item.DealerName}}</td>
-            <td>{{item.Address}}</td>
+            <td class="diff">{{item.Address}}</td>
             <td>{{item.City}}</td>
             <td>{{item.ContactNo}}</td>
-            <td>{{item.Description}}</td>
+            <td class="diff">{{item.Description}}</td>
             <td class="tab-w-5 text-right">{{item.Price | currency: 'INR' }}</td>
             <td class="d-flex justify-content-end">
               <button class="select-btn" mat-flat-button color="primary" (click)="dealerSelected(item.DealerId)">Select
-                Package</button>
+                Dealer</button>
             </td>
           </tr>
         </tbody>
