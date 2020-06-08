@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
       city : ['',Validators.required],
       state : ['',Validators.required],
       zipcode : ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern("[0-9 ]{6}")]],
-      password : ['',Validators.required],
+      password : ['',[Validators.required,Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}")]],
       confirmPassword : ['', Validators.required],
     },
       { 
@@ -121,6 +121,9 @@ export class RegisterComponent implements OnInit {
           console.log(error.error);
         alert(error.error);
         this.registerForm.controls.emailId.reset();
+        this.registerForm.controls.emailId.setErrors({'duplicate': true});
+        // this.registerForm.controls['emailId'].setErrors({duplicate: true});
+        
         });
 
     }
