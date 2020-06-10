@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     PackageSelectionComponent,
     DealerSelectionComponent,
     SlotSelectionComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    UserprofileComponent
   ],
   imports: [
     CommonModule,

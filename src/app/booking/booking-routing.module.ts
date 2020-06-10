@@ -6,6 +6,7 @@ import { CarSelectionComponent } from './components/car-selection/car-selection.
 import { ComponentsComponent } from './components/components.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'summary',
         component: ConfirmComponent
+      },
+      {
+        path: 'profile',
+        component: UserprofileComponent
       },
       {
         path: '',

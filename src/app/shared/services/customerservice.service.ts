@@ -21,4 +21,8 @@ export class CustomerserviceService {
     return this.http.post(this.baseUrl + "LoginApi/PostCustomer", user);
   }
 
+  getCustomer(id:number){
+    return this.http.get(this.baseUrl + 'getCustomer/' + id);
+  }
+
 }

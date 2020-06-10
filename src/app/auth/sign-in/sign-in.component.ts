@@ -45,6 +45,8 @@ export class SignInComponent implements OnInit {
     this._createcustomer.ValidateUser(this.customer)
       .subscribe(
         data => {
+          console.log(data["CustomerId"]);
+        
           this.userdetails = {
             Email: this.customer.Email,
             CarId: null,
@@ -52,7 +54,8 @@ export class SignInComponent implements OnInit {
             PackageName: '',
             DealerId: null,
             BookingDate: null,
-            SlotTime: null
+            SlotTime: null,
+            CustomerId: data["CustomerId"]
           }
           localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
           this.userError = ""
