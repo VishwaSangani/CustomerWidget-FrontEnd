@@ -23,10 +23,7 @@ import { momentAdapterFactory } from './admin/admin.module';
     ReactiveFormsModule,
     AuthModule,
     MaterialModules,
-<<<<<<< HEAD
     FormsModule
-=======
->>>>>>> aa877d74105e0d935c84244aa7d152a7da52aa1c
   ],
   providers: [],
   bootstrap: [AppComponent]
