@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './auth/auth.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModules } from './shared/material';
+import { CalendarModule } from 'angular-calendar';
 
 
 
@@ -21,7 +22,8 @@ import { MaterialModules } from './shared/material';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AuthModule,
-    MaterialModules
+    MaterialModules,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
