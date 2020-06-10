@@ -16,7 +16,7 @@ import { AppointmentService } from 'src/app/shared/services/appointment.service'
 })
 export class ConfirmComponent implements OnInit {
   userdetails: UserData;
-  showModal = true;
+  showModal = false;
   appointmentId;
 
   constructor(
@@ -126,6 +126,7 @@ closeModal() {
   this.showModal = false;
 }
 
-
-
+redirect(){
+this.router.navigate(['/booking']);
+}
 }

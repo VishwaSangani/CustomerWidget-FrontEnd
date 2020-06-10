@@ -8,14 +8,14 @@ export class Customer {
 
 }
 
-export class Customers {
-    FirstName: string;
-    LastName: string;
-    Email: string;
-    ContactNo: number;
-    Address: string;
+// export class Customers {
+//     FirstName: string;
+//     LastName: string;
+//     Email: string;
+//     ContactNo: number;
+//     Address: string;
 
-}
+// }
 
 export class UserLogin {
     Email: string;

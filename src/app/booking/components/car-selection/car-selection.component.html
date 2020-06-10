@@ -11,6 +11,7 @@
         <div class="row all-items-div">
             <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
                 <mat-card class="card-div" (click)="carSelected(item.CarId)">
+                 
                     <img mat-card-image src="../../../../assets/images/car.svg" alt="Photo of Car">
                     <mat-card-header class="text-center  d-flex justify-content-center">
                         <mat-card-title>{{item.BrandName}}</mat-card-title>
