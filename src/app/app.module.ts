@@ -7,8 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './auth/auth.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModules } from './shared/material';
-
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import * as moment from 'moment';
+import { momentAdapterFactory } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,10 @@ import { MaterialModules } from './shared/material';
     ReactiveFormsModule,
     AuthModule,
     MaterialModules,
+<<<<<<< HEAD
     FormsModule
+=======
+>>>>>>> aa877d74105e0d935c84244aa7d152a7da52aa1c
   ],
   providers: [],
   bootstrap: [AppComponent]

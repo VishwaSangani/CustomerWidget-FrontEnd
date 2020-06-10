@@ -12,7 +12,11 @@ const routes: Routes = [
   {
     path: 'booking',
     loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule),
-    canActivateChild : [LoginGuard]
+    canActivateChild: [LoginGuard]
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(a => a.AdminModule)
   },
   {
     path: '**',
