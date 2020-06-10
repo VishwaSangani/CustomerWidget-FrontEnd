@@ -7,9 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './auth/auth.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModules } from './shared/material';
-import { CalendarModule } from 'angular-calendar';
-
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import * as moment from 'moment';
+import { momentAdapterFactory } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { CalendarModule } from 'angular-calendar';
     ReactiveFormsModule,
     AuthModule,
     MaterialModules,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
