@@ -9,10 +9,15 @@
             width: 50px;
         }
         th{
-            white-space: nowrap;
+            &:not(.diff){
+                white-space: nowrap;
+            }
+        
         }
         td{
-            white-space: nowrap;
+            &:not(.diff){
+                white-space: nowrap;
+            }
         }
     }
 }

@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ForgetPasswordService {
-  private baseurl: string = 'http://localhost:59699/api/';
+  // private baseurl: string = 'http://localhost:59699/api/';
+  private baseurl:string = ' http://127.0.0.1:8080/api/';
   constructor(private http: HttpClient) { }
   
   forgetPassword(email,url)
