@@ -28,7 +28,7 @@ export class CalendarComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
 
-  open:boolean = false;
+  open = false;
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
@@ -45,8 +45,8 @@ export class CalendarComponent implements OnInit {
 
   events: CalendarEvent[] = [];
 
-  activeDayIsOpen: boolean = false;
-  constructor(private calendarservice : AdminCalendarService) { }
+  activeDayIsOpen = false;
+  constructor(private calendarservice: AdminCalendarService) { }
 
   ngOnInit(): void {
     console.table(this.events);
@@ -66,64 +66,63 @@ export class CalendarComponent implements OnInit {
       }
       this.viewDate = date;
     }
-  } 
+  }
 
-  openModal(){
+  openModal() {
     this.open = true;
   }
 
-  getAppointments(id:number){
-      this.calendarservice.getAppointmentId(id).subscribe(
-        data =>{
-          console.log(data)
-          this.appointments = data;
-          this.arrangeCalendar(data);
-        }
-      )
+  getAppointments(id: number) {
+    this.calendarservice.getAppointmentId(id).subscribe(
+      data => {
+        console.log(data);
+        this.appointments = data;
+        this.arrangeCalendar(data);
+      }
+    );
   }
 
- arrangeCalendar(data){
+  arrangeCalendar(data) {
 
-  data.forEach(element => {
+    data.forEach(element => {
 
-    let displayColor;
-   if(element.ServiceId == 1){
-      displayColor = colors.blue;
-   }
-   else if(element.ServiceId == 2){
-      displayColor = colors.yellow;
-   }
-   else{
-      displayColor = colors.red;
-   }
+      let displayColor;
+      if (element.ServiceId == 1) {
+        displayColor = colors.blue;
+      }
+      else if (element.ServiceId == 2) {
+        displayColor = colors.yellow;
+      }
+      else {
+        displayColor = colors.red;
+      }
 
-    var calEntry = {
-      start: startOfDay(new Date(element.DateOfBooking)),
-      title: element.RegistrationNo,
-      color: displayColor,
-    }
-    this.events.push(calEntry)
-  });
- }
+      let calEntry = {
+        start: startOfDay(new Date(element.DateOfBooking)),
+        title: element.RegistrationNo,
+        color: displayColor,
+      };
+      this.events.push(calEntry);
+    });
+  }
 
- displayData(event){
-   this.showModal =true
-   console.log(event.event.title)
-   this.appointments.forEach(element => {
-     if(element.RegistrationNo === event.event.title)
-     {
-        this.customerdata = element
-     }
-   });
-   console.log(this.customerdata)
- }
+  displayData(event) {
+    this.showModal = true;
+    console.log(event.event.title);
+    this.appointments.forEach(element => {
+      if (element.RegistrationNo === event.event.title) {
+        this.customerdata = element;
+      }
+    });
+    console.log(this.customerdata);
+  }
 
 
   setView(view: CalendarView) {
     this.view = view;
   }
 
-  closeModal(){
+  closeModal() {
     this.showModal = false;
   }
 
