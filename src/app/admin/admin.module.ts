@@ -7,6 +7,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
 import { ComponentsComponent } from './components/components.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -18,7 +19,11 @@ export function momentAdapterFactory() {
   imports: [
     CommonModule,
     AdminRoutingModule,
+    MatToolbarModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory })
+  ],
+  exports: [
+    MatToolbarModule
   ]
 })
 export class AdminModule { }
