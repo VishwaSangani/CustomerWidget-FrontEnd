@@ -13,7 +13,7 @@
     <div class="row all-items-div">
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
         <mat-card class="card-div">
-          <mat-icon class="edit" (click)="getCar(item.CarId)" >edit</mat-icon>
+          <mat-icon class="edit" (click)="getCar(item.CarId)" matTooltip="Edit Car Details" [matTooltipPosition]="'above'">edit</mat-icon>
           <img mat-card-image (click)="carSelected(item.CarId)" src="../../../../assets/images/car.svg"
             alt="Photo of Car">
           <mat-card-header (click)="carSelected(item.CarId)" class="text-center  d-flex justify-content-center">
@@ -34,7 +34,7 @@
         <mat-toolbar color="primary">
           <mat-toolbar-row>
             <h5 class="modal-title">Register Car</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <button type="button" class="close white-icon" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
               <span aria-hidden="true">&times;</span>
             </button>
           </mat-toolbar-row>
@@ -103,7 +103,7 @@
         <mat-toolbar color="primary">
           <mat-toolbar-row>
             <h5 class="modal-title">Edit Car Details</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <button type="button" class="close white-icon" data-dismiss="modal" aria-label="Close"  (click)="closeModal()">
               <span aria-hidden="true">&times;</span>
             </button>
           </mat-toolbar-row>
