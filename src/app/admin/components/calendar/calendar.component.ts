@@ -19,7 +19,6 @@ const colors: any = {
     secondary: '#FDF1BA',
   },
 };
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',

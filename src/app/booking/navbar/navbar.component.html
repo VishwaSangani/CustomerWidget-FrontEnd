@@ -1,9 +1,10 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>Customer Widget</span>
-      <span>
-        <a class="nav-item nav-link" routerLink="profile" routerLinkActive="active">Profile</a></span>
-      <span class="spacer"></span>
-      <span> <button mat-raised-button color="warn" (click)="logout()">Log Out</button></span>
-    </mat-toolbar-row>
+  <mat-toolbar-row class="container">
+    <h3 routerLink="selectCar">Customer Widget</h3>
+    <div class="items-right">
+      <a class="nav-item nav-link" routerLink="profile" routerLinkActive="active">Profile</a>
+      <a class="nav-item nav-link" routerLink="appointment" routerLinkActive="active">Appointments</a>
+      <button mat-raised-button color="warn" (click)="logout()">Log Out</button>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>

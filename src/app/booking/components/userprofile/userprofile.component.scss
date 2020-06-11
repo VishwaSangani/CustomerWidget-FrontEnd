@@ -1,5 +1,32 @@
+.main-back{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .user-row {
     margin-bottom: 14px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.panel-items{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    h3{
+        flex: 1;
+    }
 }
 .spacer{
     flex: 1 1 auto,

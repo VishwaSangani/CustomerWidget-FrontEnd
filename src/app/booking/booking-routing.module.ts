@@ -1,3 +1,4 @@
+import { AppointmentComponent } from './components/appointment/appointment.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { SlotSelectionComponent } from './components/slot-selection/slot-selection.component';
 import { DealerSelectionComponent } from './components/dealer-selection/dealer-selection.component';
@@ -6,7 +7,7 @@ import { CarSelectionComponent } from './components/car-selection/car-selection.
 import { ComponentsComponent } from './components/components.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserprofileComponent } from './userprofile/userprofile.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: UserprofileComponent
+      },
+      {
+        path: 'appointment',
+        component: AppointmentComponent
       },
       {
         path: '',

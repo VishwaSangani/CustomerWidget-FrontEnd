@@ -11,3 +11,21 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.close{
+    opacity: 1;
+    &:hover{
+        opacity: 1;
+    }
+}
+.white-cross{
+    color: #fff;
+    opacity: 1;
+    background-color: #58319E;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
