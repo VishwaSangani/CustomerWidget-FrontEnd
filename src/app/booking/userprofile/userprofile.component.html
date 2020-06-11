@@ -1,122 +1,78 @@
 <div class="container">
-
-
-    <div class="row">
-        <!-- <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-         <A href="edit.html" >Edit Profile</A>
-
-      <A href="edit.html" >Logout</A>
-     <br>
-<p class=" text-info">May 05,2014,03:00 pm </p>
-    </div> -->
+    <div class="row main-back">
         <div
             class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-
-
-             <form [formGroup]="updateCustomer"  >
+            <form [formGroup]="updateCustomer">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-lg-9">
-
-                                <h3 class="panel-title">{{customer.Email}}</h3>
-                            </div>
-                            <div class="col-lg-3">
-
-                                <button class="btn btn-primary spacer" (click)="enableText()" >Edit Profile <i
-                                        class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                            </div>
+                        <div class="row panel-items">
+                            <h3 class="panel-title">{{customer.Email}}</h3>
+                            <!-- <button class="btn btn-primary spacer" (click)="enableText()">Edit Profile
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button> -->
                         </div>
                     </div>
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic"
-                                    src="./assets/images/User.png" class="img-circle img-responsive"> </div>
+                        <div class="row info">
+                            <img alt="User Pic" src="./assets/images/User.png" class="img-circle img-responsive">
                             <div class=" col-md-9 col-lg-9 ">
                                 <table class="table table-user-information">
                                     <tbody>
                                         <tr>
                                             <td>FirstName</td>
-                                            <!-- <td><input type="text" formControlName="firstname" [disabled]="!enable"
-                                                   class="w" [value]=customer.FirstName></td> -->
-                                                  
-                                         <td>  <input matInput #firstNameVal [value]="customer.FirstName" type="text" formControlName="firstname"></td>
-
+                                            <td>
+                                                <input matInput #firstNameVal [value]="customer.FirstName" type="text"
+                                                    formControlName="firstname">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>LastName</td>
-                                            <!-- <td><input type="text" formControlName="lastname" [disabled]="!enable" class="w"
-                                                   name = "lastname" [value]=customer.LastName></td> -->
-                                        <input matInput #lastNameVal [value]="customer.LastName" type="text" formControlName="lastname">
+                                            <input matInput #lastNameVal [value]="customer.LastName" type="text"
+                                                formControlName="lastname">
                                         </tr>
-                                      
+
                                         <tr>
                                             <td>ContactNo</td>
-                                            <!-- <td><input type="text"formControlName="contact" [disabled]="!enable" class="w"
-                                                   name = "contact" [value]="customer.ContactNo"></td> -->
-                                                   <td>    <input matInput [value]="customer.ContactNo" #mobileVal type="text" formControlName="contact"></td>
+                                            <td> <input matInput [value]="customer.ContactNo" #mobileVal type="text"
+                                                    formControlName="contact"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Address Line1</td>
-                                            <!-- <td><input type="text" formControlName="address1" [disabled]="!enable" class="w"
-                                                name = "address1"    [value]=address1></td> -->
-                                                <td>   <textarea matInput [value]="address1" placeholder="Ex. 100 Main St" formControlName="address1"></textarea></td>
+                                            <td> <textarea matInput [value]="address1" placeholder="Ex. 100 Main St"
+                                                    formControlName="address1"></textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Address Line2</td>
-                                            <!-- <td><input type="text"  formControlName="address2" [disabled]="!enable" class="w"
-                                                name = "address2"   [value]=address2></td> -->
-                                                <td> <textarea matInput [value]="address2" placeholder="Ex. 100 Main St" formControlName="address2"></textarea></td>
+                                            <td> <textarea matInput [value]="address2" placeholder="Ex. 100 Main St"
+                                                    formControlName="address2"></textarea></td>
                                         </tr>
                                         <tr>
                                             <td>City</td>
-                                            <!-- <td><input type="text" formControlName="city" [disabled]="!enable" class="w"
-                                                name = "city"  [value]=city></td> -->
-                                                <td> <input matInput [value]="city" #cityVal type="text" formControlName="city"></td>
-
+                                            <td> <input matInput [value]="city" #cityVal type="text"
+                                                    formControlName="city"></td>
                                         </tr>
                                         <tr>
                                             <td>State</td>
-                                            <!-- <td><select  name = "state"  formControlName="state"[disabled]="!enable" matNativeControl>
+                                            <td> <select matNativeControl formControlName="state">
                                                     <option [value]="state" selected>{{state}}</option>
-                                                    <option *ngFor="let s of states">
-                                                        {{s}}
+                                                    <option *ngFor="let state of states">
+                                                        {{state}}
                                                     </option>
-                                                </select></td> -->
-                                                <td>  <select matNativeControl formControlName="state">
-                                                    <option [value]="state" selected>{{state}}</option>
-                                                    <option *ngFor="let state of states" >
-                                                      {{state}}
-                                                    </option>
-                                                  </select></td>
-                                         
-
+                                                </select></td>
                                         </tr>
                                         <tr>
                                             <td>ZipCode</td>
-                                            <!-- <td><input type="text"  name = "zipcode" formControlName="zipcode"[disabled]="!enable" class="w"
-                                                    [value]=zipcode></td> -->
-                                                    <td> <input matInput #zipcodeVal type="text" [value]="zipcode"maxlength="6" formControlName="zipcode"></td>
-
+                                            <td> <input matInput #zipcodeVal type="text" [value]="zipcode" maxlength="6"
+                                                    formControlName="zipcode"></td>
                                         </tr>
-
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
-
-                        <button class="btn btn-primary" [disabled]="!enable" (click)="Save()">Save Profile</button>
-                
-                    </div>
-
                 </div>
-            </form> 
-    
+            </form>
         </div>
     </div>
-
 </div>

@@ -18,7 +18,6 @@ const colors: any = {
     secondary: '#FDF1BA',
   },
 };
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -97,7 +96,7 @@ export class CalendarComponent implements OnInit {
   ];
 
   activeDayIsOpen: boolean = false;
-  modal: any;
+  modal: NgbModal;
   constructor() { }
 
   ngOnInit(): void {
