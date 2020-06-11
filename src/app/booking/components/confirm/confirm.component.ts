@@ -23,8 +23,8 @@ export class ConfirmComponent implements OnInit {
     private summaryservice: SummaryService,
     private router: Router,
     private datePipe: DatePipe,
-    private _snackbar :MatSnackBar,
-    private appointment : AppointmentService
+    private _snackbar: MatSnackBar,
+    private appointment: AppointmentService
   ) { }
 
   details: DisplaySummary = {
@@ -58,7 +58,7 @@ export class ConfirmComponent implements OnInit {
     console.log(summary);
     this.summaryservice.getSummary(summary).subscribe(
       data => {
-        console.log(data)
+        console.log(data);
         this.details.customerName = data[0].FirstName + ' ' + data[0].LastName;
         this.details.carName = data[0].BrandName + ' ' + data[0].Model;
         this.details.CarNo = data[0].RegistrationNo;
@@ -92,22 +92,22 @@ export class ConfirmComponent implements OnInit {
       (error: HttpErrorResponse) => {
         console.log(error.error)
         this.openSnackbar(error.error);
-        setTimeout(()=>{
+        setTimeout(() => {
           this.router.navigate(['/booking']);
         }, 3000)
       });
   }
 
-  bookAppointment(){
+  bookAppointment() {
     let dataObject = {
       Email: this.userdetails.Email,
-      CarId : this.userdetails.CarId,
-      Slotdate : this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
-      Slottime : this.userdetails.SlotTime
+      CarId: this.userdetails.CarId,
+      Slotdate: this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
+      Slottime: this.userdetails.SlotTime
     }
     console.log(dataObject);
     this.appointment.getAppointmentId(dataObject).subscribe(
-      data =>{
+      data => {
         this.showModal = true;
         console.log(data)
         this.appointmentId = data
@@ -115,19 +115,19 @@ export class ConfirmComponent implements OnInit {
     )
 
   }
-  openSnackbar(message:string){
-    this._snackbar.open(message,null,{
+  openSnackbar(message: string) {
+    this._snackbar.open(message, null, {
       duration: 3000,
-      horizontalPosition:'center',
-      verticalPosition:'bottom',
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
     });
-}
+  }
 
-closeModal() {
-  this.showModal = false;
-}
+  closeModal() {
+    this.showModal = false;
+  }
 
-redirect(){
-this.router.navigate(['/booking']);
-}
+  redirect() {
+    this.router.navigate(['/booking']);
+  }
 }
