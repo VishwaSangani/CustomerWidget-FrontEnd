@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
+  registerError: string;
   customer:Customer = {
     
     FirstName:"",
@@ -80,7 +82,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     //alert('Clicked')
-
+    this.registerError = null
     console.log(this.registerForm.controls.address.value)
     console.log(this.registerForm.value)
   // var md5 = require('md5');
@@ -119,7 +121,7 @@ export class RegisterComponent implements OnInit {
           },
           (error:HttpErrorResponse) => {
           console.log(error.error);
-        alert(error.error);
+          this.registerError = error.error
         this.registerForm.controls.emailId.reset();
         this.registerForm.controls.emailId.setErrors({'duplicate': true});
         // this.registerForm.controls['emailId'].setErrors({duplicate: true});

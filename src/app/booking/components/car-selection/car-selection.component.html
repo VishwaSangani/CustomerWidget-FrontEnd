@@ -1,94 +1,167 @@
 <section class="main-container">
-    <div class="container">
-        <div class="row title-div">
-          <div class="d-flex flex-row">
-            <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 40px;">directions_car </mat-icon>&nbsp;&nbsp;
-            <h1 class="display-4 p-2">Select your car</h1>
-          </div>
-          
-            <button mat-flat-button color="primary" (click)="showModal = true">Add new car <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon></button>
-        </div>
-        <div class="row all-items-div">
-            <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
-                <mat-card class="card-div" (click)="carSelected(item.CarId)">
-                 
-                    <img mat-card-image src="../../../../assets/images/car.svg" alt="Photo of Car">
-                    <mat-card-header class="text-center  d-flex justify-content-center">
-                        <mat-card-title>{{item.BrandName}}</mat-card-title>
-                        <mat-card-subtitle>{{item.Model}}</mat-card-subtitle>
-                        <mat-card-subtitle>{{item.RegistrationNo}}</mat-card-subtitle>
-                      </mat-card-header>
-                  </mat-card>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row title-div">
+      <div class="d-flex flex-row">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 40px;">directions_car </mat-icon>
+        &nbsp;&nbsp;
+        <h1 class="display-4 p-2">Select your car</h1>
+      </div>
+
+      <button mat-flat-button color="primary" (click)="showModal = true">Add new car <mat-icon aria-hidden="false"
+          aria-label="Example home icon">add</mat-icon></button>
     </div>
-</section>
-<!-- Add Car Model -->
-<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header p-0">
-            <mat-toolbar color="primary">
-                <mat-toolbar-row>
-                    <h5 class="modal-title">Register Car</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                </mat-toolbar-row>
-              </mat-toolbar>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="carDetailsForm">
-            <div class="d-flex flex-column">
-                <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Car Name</mat-label>
-                    <input matInput #carname type="text" formControlName="Model" style="padding-left: 10px;">
-                    <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('Model').reset()">
-                      <mat-icon style="font-size: small;">close</mat-icon>
-                    </button>
-                    <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
-                      This field is required!
-                    </mat-error>
-                </mat-form-field>
-    
-                <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Car Brand</mat-label>
-                    <input matInput #carbrand type="text" formControlName="BrandName" style="padding-left: 10px;">
-                    <button mat-button *ngIf="carbrand.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('BrandName').reset()">
-                      <mat-icon style="font-size: small;">close</mat-icon>
-                    </button>
-                    <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
-                      This field is required!
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Registration Number</mat-label>
-                    <input matInput #carno type="text" formControlName="RegistrationNo" style="padding-left: 10px;">
-                    <button mat-button *ngIf="carno.value" matSuffix mat-icon-button aria-label="Clear" (click)="carDetailsForm.get('RegistrationNo').reset()">
-                      <mat-icon style="font-size: small;">close</mat-icon>
-                    </button>
-                    <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('required')">
-                      This field is required!
-                    </mat-error>
-                    <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('maxlength')">
-                       Car registration number cannot be more than 10 characters
-                      </mat-error>
-                </mat-form-field>
-                
-            </div>
-              
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-          <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click) = "addCar()">Add Car</button>
-        </div>
+    <div class="row all-items-div">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
+        <mat-card class="card-div">
+          <mat-icon class="edit" (click)="getCar(item.CarId)" >edit</mat-icon>
+          <img mat-card-image (click)="carSelected(item.CarId)" src="../../../../assets/images/car.svg"
+            alt="Photo of Car">
+          <mat-card-header (click)="carSelected(item.CarId)" class="text-center  d-flex justify-content-center">
+            <mat-card-title>{{item.BrandName}}</mat-card-title>
+            <mat-card-subtitle>{{item.Model}}</mat-card-subtitle>
+            <mat-card-subtitle>{{item.RegistrationNo}}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </div>
     </div>
   </div>
-   
+</section>
+<!-- Add Car Model -->
+<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header p-0">
+        <mat-toolbar color="primary">
+          <mat-toolbar-row>
+            <h5 class="modal-title">Register Car</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carDetailsForm">
+          <div class="d-flex flex-column">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Car Name</mat-label>
+              <input matInput #carname type="text" formControlName="Model" style="padding-left: 10px;">
+              <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="carDetailsForm.get('Model').reset()">
+                <mat-icon style="font-size: small;">close</mat-icon>
+              </button>
+              <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
+                This field is required!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Car Brand</mat-label>
+              <input matInput #carbrand type="text" formControlName="BrandName" style="padding-left: 10px;">
+              <button mat-button *ngIf="carbrand.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="carDetailsForm.get('BrandName').reset()">
+                <mat-icon style="font-size: small;">close</mat-icon>
+              </button>
+              <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
+                This field is required!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Registration Number</mat-label>
+              <input matInput #carno type="text" formControlName="RegistrationNo" style="padding-left: 10px;">
+              <button mat-button *ngIf="carno.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="carDetailsForm.get('RegistrationNo').reset()">
+                <mat-icon style="font-size: small;">close</mat-icon>
+              </button>
+              <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('required')">
+                This field is required!
+              </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('maxlength')">
+                Car registration number cannot be more than 10 characters
+              </mat-error>
+            </mat-form-field>
+
+          </div>
 
 
-  
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click)="addCar()">Add
+          Car</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Car Model -->
+<div class="modal" tabindex="-1" role="dialog" [style.display]="showEditModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header p-0">
+        <mat-toolbar color="primary">
+          <mat-toolbar-row>
+            <h5 class="modal-title">Edit Car Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carDetailsForm">
+          <div class="d-flex flex-column">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <input matInput #carid type="text" formControlName="CarId" hidden>
+              <mat-label>Car Name</mat-label>
+              <input matInput #carname type="text" formControlName="Model" style="padding-left: 10px;">
+              <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="carDetailsForm.get('Model').reset()">
+                <mat-icon style="font-size: small;">close</mat-icon>
+              </button>
+              <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
+                This field is required!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Car Brand</mat-label>
+              <input matInput #carbrand type="text" formControlName="BrandName" style="padding-left: 10px;">
+              <button mat-button *ngIf="carbrand.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="carDetailsForm.get('BrandName').reset()">
+                <mat-icon style="font-size: small;">close</mat-icon>
+              </button>
+              <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
+                This field is required!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Registration Number</mat-label>
+              <input matInput #carno type="text" formControlName="RegistrationNo" style="padding-left: 10px;">
+              <button mat-button *ngIf="carno.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="carDetailsForm.get('RegistrationNo').reset()">
+                <mat-icon style="font-size: small;">close</mat-icon>
+              </button>
+              <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('required')">
+                This field is required!
+              </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('RegistrationNo').hasError('maxlength')">
+                Car registration number cannot be more than 10 characters
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click)="updateCar()">Update
+          Car</button>
+      </div>
+    </div>
+  </div>
+</div>
