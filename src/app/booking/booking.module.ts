@@ -10,10 +10,11 @@ import { PackageSelectionComponent } from './components/package-selection/packag
 import { DealerSelectionComponent } from './components/dealer-selection/dealer-selection.component';
 import { SlotSelectionComponent } from './components/slot-selection/slot-selection.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     PackageSelectionComponent,
     DealerSelectionComponent,
     SlotSelectionComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    UserprofileComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     MatNativeDateModule,
     NgbModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule
   ],
   providers: [MatDatepickerModule,DatePipe]
 })

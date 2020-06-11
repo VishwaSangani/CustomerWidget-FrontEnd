@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, from } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Customer, UserLogin } from '../models/Customer';
@@ -13,6 +13,12 @@ export class CustomerserviceService {
 
   constructor(private http: HttpClient, ) { }
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
   createCustomer(customer: Customer) {
     return this.http.post(this.baseUrl + "CreateCustomer", customer);
   }
@@ -20,5 +26,18 @@ export class CustomerserviceService {
   ValidateUser(user: UserLogin) {
     return this.http.post(this.baseUrl + "LoginApi/PostCustomer", user);
   }
+
+  getCustomer(id:number){
+    return this.http.get(this.baseUrl + 'getCustomer?id=' + id);
+  }
+
+  UpdateCustomer(id, data){
+    return this.http.put(this.baseUrl + 'api/editCustomer?id=' + id, JSON.stringify(data), this.httpOptions)
+      // .pipe(
+      //   retry(1),
+      //   catchError(this.errorHandl)
+      // )
+  }
+
 
 }

@@ -17,6 +17,7 @@ export class CarSelectionComponent implements OnInit {
   constructor(private _router: Router, private fb: FormBuilder, private carservice: CarServiceService, private _snackbar : MatSnackBar ) { }
 
   showModal: Boolean = false;
+  showEditModal: Boolean = false;
   carDetailsForm: FormGroup
   carList
   userdetails: UserData
@@ -27,6 +28,7 @@ export class CarSelectionComponent implements OnInit {
     console.log(this.userdetails.Email)
     this.getAllCars();
     this.carDetailsForm = this.fb.group({
+      CarId: null ,
       Model: ['', Validators.required],
       BrandName: ['', Validators.required],
       RegistrationNo: ['', [Validators.required, Validators.maxLength(10)]]
@@ -43,6 +45,7 @@ export class CarSelectionComponent implements OnInit {
 
   closeModal() {
     this.showModal = false;
+    this.showEditModal = false;
     this.carDetailsForm.reset();
   }
 
@@ -78,6 +81,45 @@ export class CarSelectionComponent implements OnInit {
         this.openSnackbar(error.error)
       })
     this.showModal = false;
+    this.carDetailsForm.reset();
+  }
+
+  getCar(id)
+  {
+    this.showEditModal = true;
+console.log(id);
+// let car: CarDetails = this.carDetailsForm.value;
+// car.Email = this.userdetails.Email;
+// console.log(car)
+this.carservice.getCar(id).subscribe(
+  data => {
+    console.log("DATA: "+ data[0].Model)
+    this.carDetailsForm.controls.CarId.setValue(data[0].CarId);
+    this.carDetailsForm.controls.Model.setValue(data[0].Model);
+    this.carDetailsForm.controls.BrandName.setValue(data[0].BrandName);
+    this.carDetailsForm.controls.RegistrationNo.setValue(data[0].RegistrationNo);
+  },
+  error => {
+    this.openSnackbar(error.error)
+  })
+this.showModal = false;
+this.carDetailsForm.reset();
+  }
+
+  updateCar()
+  {
+    let id =  this.carDetailsForm.controls.CarId.value;
+      let car: CarDetails = this.carDetailsForm.value;
+    console.log(car)
+    this.carservice.UpdateCar(id,car).subscribe(
+      data => {
+        this.openSnackbar("Car Details Updated Successfully!")
+        this.getAllCars();
+      },
+      error => {
+        this.openSnackbar(error.error)
+      })
+    this.showEditModal = false;
     this.carDetailsForm.reset();
   }
 
