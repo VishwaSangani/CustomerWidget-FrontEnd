@@ -177,6 +177,9 @@
                     </div>
                   </div>
               </form>
+              <div>
+                <p *ngIf="registerError" style="font-size: medium; color: red;">{{registerError}}</p>
+              </div>
               <div class="row d-flex flex-row justify-content-around">
                   <button mat-raised-button color="primary" [disabled]="registerForm.invalid" class="button-submit"  (click)="onSubmit()">
                       Register
