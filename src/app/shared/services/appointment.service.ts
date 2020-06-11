@@ -6,11 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppointmentService {
 
-  // private baseUrl:string = 'http://localhost:59699/api/';
-  private baseUrl:string = ' http://127.0.0.1:8080/api/';
+  private baseUrl: string = 'http://localhost:59699/api/';
+  // private baseUrl:string = ' http://127.0.0.1:8080/api/';
   constructor(private http: HttpClient) { }
 
-  getAppointmentId(appointment){
-    return this.http.post(this.baseUrl+"Appoinment/PostAppoinment", appointment);
+  getAppointmentId(appointment) {
+    return this.http.post(this.baseUrl + 'Appoinment/PostAppoinment', appointment);
   }
 }
