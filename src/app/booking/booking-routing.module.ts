@@ -7,7 +7,7 @@ import { CarSelectionComponent } from './components/car-selection/car-selection.
 import { ComponentsComponent } from './components/components.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserprofileComponent } from './userprofile/userprofile.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 
 const routes: Routes = [
