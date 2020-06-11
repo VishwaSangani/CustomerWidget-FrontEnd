@@ -1,0 +1,23 @@
+a.main-container{
+    overflow: auto;
+    min-height: calc(100vh - 64px);
+    .title-row{
+        margin-top: 30px;
+    }
+    table{
+        .tab-w-5{
+            width: 50px;
+        }
+        th{
+            &:not(.diff){
+                white-space: nowrap;
+            }
+        
+        }
+        td{
+            &:not(.diff){
+                white-space: nowrap;
+            }
+        }
+    }
+}
