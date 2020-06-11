@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { AppointmentComponent } from './components/appointment/appointment.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     DealerSelectionComponent,
     SlotSelectionComponent,
     ConfirmComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    AppointmentComponent
   ],
   imports: [
     CommonModule,

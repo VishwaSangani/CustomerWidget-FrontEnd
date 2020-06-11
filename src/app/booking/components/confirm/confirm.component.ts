@@ -55,6 +55,7 @@ export class ConfirmComponent implements OnInit {
       CarId: this.userdetails.CarId,
       PackageId: this.userdetails.PackageId,
     };
+    console.log(summary);
     this.summaryservice.getSummary(summary).subscribe(
       data => {
         console.log(data)
@@ -83,7 +84,7 @@ export class ConfirmComponent implements OnInit {
       dateOfbooking: this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
       slotTime: this.details.time
     };
-
+    console.log(postsummary);
     this.summaryservice.postSummary(postsummary).subscribe(
       () => {
         this.bookAppointment();

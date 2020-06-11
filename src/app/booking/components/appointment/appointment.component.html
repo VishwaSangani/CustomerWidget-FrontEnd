@@ -1,0 +1,46 @@
+<section class="main-container">
+    <div class="container">
+      <div class="row title-row">
+        <h1 class="">Your Appointments</h1>
+      </div>
+      <div class="dealer-list-table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Sr. No </th>
+              <th scope="col">Car Name</th>
+              <th scope="col">Registration No </th>
+              <th scope="col">Dealer Name</th>
+              <th class="diff" scope="col">Address</th>
+              <th scope="col">Appointment Date</th>
+              <th scope="col">Slot Time</th>
+              <!-- <th scope="col">Amount</th> -->
+              <!-- <th scope="col" class="tab-w-5">Price</th> -->
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of appointmentdetail; let i = index">
+              <td scope="row">{{i + 1}}</td>
+              <td>{{item.Model}}</td>
+              <td>{{item.RegistrationNo}}</td>
+              <td>{{item.DealerName}}</td>
+              <td class="diff">{{item.Address}}</td>
+              <td>{{item.DateOfBooking | date:'dd/MM/yyyy'}}</td>
+              <td>{{item.SlotTime}}</td>
+              <!-- <td>{{item.Price}}/-</td> -->
+              <!-- <td *ngIf="item.DateOfBooking>date else elseBlock">Pending</td>
+              <ng-template #elseBlock>Completed</ng-template> -->
+
+              
+              <!-- <td class="tab-w-5 text-right">{{item.Price | currency: 'INR' }}</td>
+              <td class="d-flex justify-content-end">
+                <button class="select-btn" mat-flat-button color="primary" (click)="dealerSelected(item.DealerId)">Select
+                  Dealer</button>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>

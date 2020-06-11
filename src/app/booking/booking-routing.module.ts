@@ -1,3 +1,4 @@
+import { AppointmentComponent } from './components/appointment/appointment.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { SlotSelectionComponent } from './components/slot-selection/slot-selection.component';
 import { DealerSelectionComponent } from './components/dealer-selection/dealer-selection.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: UserprofileComponent
+      },
+      {
+        path: 'appointment',
+        component: AppointmentComponent
       },
       {
         path: '',
