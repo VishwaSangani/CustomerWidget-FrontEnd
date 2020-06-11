@@ -14,12 +14,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { ConfirmComponent } from './components/confirm/confirm.component';
-<<<<<<< HEAD
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
-=======
-import { UserprofileComponent } from './userprofile/userprofile.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
->>>>>>> fc3b4b56b01feee6d4cd8ec39015aaf7e7e4e9e1
+
 
 
 @NgModule({

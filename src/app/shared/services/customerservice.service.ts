@@ -8,8 +8,8 @@ import { Customer, UserLogin } from '../models/Customer';
   providedIn: 'root'
 })
 export class CustomerserviceService {
-  private baseUrl: string = 'http://localhost:59699/api/';
-  //private baseUrl:string = ' http://127.0.0.1:8080/api/';
+  //private baseUrl: string = 'http://localhost:59699/api/';
+  private baseUrl:string = ' http://127.0.0.1:8080/api/';
 
   constructor(private http: HttpClient,) { }
 
@@ -31,21 +31,12 @@ export class CustomerserviceService {
     return this.http.get(this.baseUrl + 'getCustomer?id=' + id);
   }
 
-<<<<<<< HEAD
   UpdateCustomer(id, data){
     return this.http.put(this.baseUrl + 'editCustomer?id=' + id, JSON.stringify(data), this.httpOptions)
       // .pipe(
       //   retry(1),
       //   catchError(this.errorHandl)
       // )
-=======
-  UpdateCustomer(id, data) {
-    return this.http.put(this.baseUrl + 'api/editCustomer?id=' + id, JSON.stringify(data), this.httpOptions)
-    // .pipe(
-    //   retry(1),
-    //   catchError(this.errorHandl)
-    // )
->>>>>>> fc3b4b56b01feee6d4cd8ec39015aaf7e7e4e9e1
   }
 
 
