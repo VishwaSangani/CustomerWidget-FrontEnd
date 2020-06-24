@@ -6,6 +6,8 @@ import { tick } from '@angular/core/testing';
 import { states } from '../../../environments/variables';
 import{NgForm, FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import {NgControl} from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-userprofile',
@@ -47,7 +49,7 @@ export class UserprofileComponent implements OnInit {
     this.getCustomer.getCustomer((this.userdetails.CustomerId)).subscribe
     (
       data => {
-        // console.log(data);
+         console.log(data);
         this.customer.FirstName = data[0].FirstName;
         this.customer.LastName = data[0].LastName;
         this.customer.Email = data[0].Email;
