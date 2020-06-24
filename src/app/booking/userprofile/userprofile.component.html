@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row main-back">
+        <div
+            class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+            <form [formGroup]="updateCustomer">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row panel-items">
+                            <h3 class="panel-title">{{customer.Email}}</h3>
+                            <!-- <button class="btn btn-primary spacer" (click)="enableText()">Edit Profile
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button> -->
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row info">
+                            <img alt="User Pic" src="./assets/images/User.png" class="img-circle img-responsive">
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>FirstName</td>
+                                            <td>
+                                                <input matInput #firstNameVal [value]="customer.FirstName" type="text"
+                                                    formControlName="firstname">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LastName</td>
+                                            <input matInput #lastNameVal [value]="customer.LastName" type="text"
+                                                formControlName="lastname">
+                                        </tr>
+
+                                        <tr>
+                                            <td>ContactNo</td>
+                                            <td> <input matInput [value]="customer.ContactNo" #mobileVal type="text"
+                                                    formControlName="contact"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Address Line1</td>
+                                            <td> <textarea matInput [value]="address1" placeholder="Ex. 100 Main St"
+                                                    formControlName="address1"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address Line2</td>
+                                            <td> <textarea matInput [value]="address2" placeholder="Ex. 100 Main St"
+                                                    formControlName="address2"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td>City</td>
+                                            <td> <input matInput [value]="city" #cityVal type="text"
+                                                    formControlName="city"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>State</td>
+                                            <td> <select matNativeControl formControlName="state">
+                                                    <option [value]="state" selected>{{state}}</option>
+                                                    <option *ngFor="let state of states">
+                                                        {{state}}
+                                                    </option>
+                                                </select></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZipCode</td>
+                                            <td> <input matInput #zipcodeVal type="text" [value]="zipcode" maxlength="6"
+                                                    formControlName="zipcode"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

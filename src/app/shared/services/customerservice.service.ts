@@ -31,12 +31,12 @@ export class CustomerserviceService {
     return this.http.get(this.baseUrl + 'getCustomer?id=' + id);
   }
 
-  UpdateCustomer(id, data){
+  UpdateCustomer(id, data) {
     return this.http.put(this.baseUrl + 'editCustomer?id=' + id, JSON.stringify(data), this.httpOptions)
-      // .pipe(
-      //   retry(1),
-      //   catchError(this.errorHandl)
-      // )
+    // .pipe(
+    //   retry(1),
+    //   catchError(this.errorHandl)
+    // )
   }
 
 

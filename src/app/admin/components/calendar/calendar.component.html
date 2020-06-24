@@ -39,15 +39,82 @@
     <div [ngSwitch]="view">
         <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
             [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
-            (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+            (eventClicked)="displayData($event)" >
         </mwl-calendar-month-view>
         <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
-            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
-            (eventTimesChanged)="eventTimesChanged($event)">
+            [refresh]="refresh" (eventClicked)="showModal = true"
+            >
         </mwl-calendar-week-view>
         <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
-            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
-            (eventTimesChanged)="eventTimesChanged($event)">
+            [refresh]="refresh" (eventClicked)="showModal = true">
         </mwl-calendar-day-view>
     </div>
 </section>
+
+
+
+<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header p-0">
+            <mat-toolbar color="primary">
+                <mat-toolbar-row>
+                    <h5 class="modal-title">Appointment Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </mat-toolbar-row>
+              </mat-toolbar>
+        </div>
+        <div class="modal-body">
+          <div *ngIf = "customerdata">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                  <td>
+                    Customer Name:
+                  </td>
+                  <td>
+                        {{customerdata.FirstName}} {{customerdata.LastName}}
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                         RegistrationNo:
+                    </td>
+                    <td>
+                        {{customerdata.RegistrationNo}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Car Details:
+                    </td>
+                    <td>
+                        {{customerdata.BrandName}} {{customerdata.Model}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Service Type:
+                    </td>
+                    <td *ngIf="customerdata.ServiceId == 1">
+                        Basic Service Package
+                    </td>
+                    <td *ngIf="customerdata.ServiceId == 2">
+                        Premium Service Package
+                    </td>
+                    <td *ngIf="customerdata.ServiceId == 3">
+                        Executive Service Package
+                    </td>
+                </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="showModal=false">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
