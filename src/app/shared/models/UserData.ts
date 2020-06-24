@@ -6,6 +6,6 @@ export class UserData {
     DealerId: number;
     BookingDate: string;
     SlotTime: string;
-    
+    Password: string;
     CustomerId: number;
 }

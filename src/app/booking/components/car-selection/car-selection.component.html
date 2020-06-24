@@ -2,18 +2,22 @@
   <div class="container">
     <div class="row title-div">
       <div class="d-flex flex-row">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 40px;">directions_car </mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 40px;">directions_car
+        </mat-icon>
         &nbsp;&nbsp;
-        <h1 class="display-4 p-2">Select your car</h1>
+        <h1 class="display-4 p-2">
+          Select your car
+        </h1>
       </div>
-
       <button mat-flat-button color="primary" (click)="showModal = true">Add new car <mat-icon aria-hidden="false"
-          aria-label="Example home icon">add</mat-icon></button>
+          aria-label="Example home icon">add</mat-icon>
+      </button>
     </div>
     <div class="row all-items-div">
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of carList">
         <mat-card class="card-div">
-          <mat-icon class="edit" (click)="getCar(item.CarId)" >edit</mat-icon>
+          <mat-icon class="edit" (click)="getCar(item.CarId)" matTooltip="Edit Car Details"
+            [matTooltipPosition]="'above'">edit</mat-icon>
           <img mat-card-image (click)="carSelected(item.CarId)" src="../../../../assets/images/car.svg"
             alt="Photo of Car">
           <mat-card-header (click)="carSelected(item.CarId)" class="text-center  d-flex justify-content-center">
@@ -34,8 +38,9 @@
         <mat-toolbar color="primary">
           <mat-toolbar-row>
             <h5 class="modal-title">Register Car</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
-              <span aria-hidden="true">&times;</span>
+            <button type="button" class="close white-icon" data-dismiss="modal" aria-label="Close"
+              (click)="closeModal()">
+              <span aria-hidden="true" class="white-cross">&times;</span>
             </button>
           </mat-toolbar-row>
         </mat-toolbar>
@@ -53,8 +58,10 @@
               <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
                 This field is required!
               </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('Model').hasError('maxlength')">
+                Car Model Name cannot be more than 30 characters
+              </mat-error>
             </mat-form-field>
-
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Car Brand</mat-label>
               <input matInput #carbrand type="text" formControlName="BrandName" style="padding-left: 10px;">
@@ -65,8 +72,10 @@
               <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
                 This field is required!
               </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('maxlength')">
+                Car Brandname cannot be more than 30 characters
+              </mat-error>
             </mat-form-field>
-
             <mat-form-field appearance="outline">
               <mat-label>Registration Number</mat-label>
               <input matInput #carno type="text" formControlName="RegistrationNo" style="padding-left: 10px;">
@@ -81,16 +90,12 @@
                 Car registration number cannot be more than 10 characters
               </mat-error>
             </mat-form-field>
-
           </div>
-
-
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-        <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click)="addCar()">Add
-          Car</button>
+        <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click)="addCar()">Add Car</button>
       </div>
     </div>
   </div>
@@ -104,8 +109,12 @@
           <mat-toolbar-row>
             <h5 class="modal-title">Edit Car Details</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
-              <span aria-hidden="true">&times;</span>
+              <span class="white-cross" aria-hidden="true">&times;</span>
             </button>
+            <!-- <button type="button" class="close white-icon" data-dismiss="modal" aria-label="Close"
+              (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
           </mat-toolbar-row>
         </mat-toolbar>
       </div>
@@ -113,7 +122,6 @@
         <form [formGroup]="carDetailsForm">
           <div class="d-flex flex-column">
             <mat-form-field class="example-full-width" appearance="outline">
-              <input matInput #carid type="text" formControlName="CarId" hidden>
               <mat-label>Car Name</mat-label>
               <input matInput #carname type="text" formControlName="Model" style="padding-left: 10px;">
               <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear"
@@ -123,8 +131,10 @@
               <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
                 This field is required!
               </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('Model').hasError('maxlength')">
+                Car Model Name cannot be more than 30 characters
+              </mat-error>
             </mat-form-field>
-
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Car Brand</mat-label>
               <input matInput #carbrand type="text" formControlName="BrandName" style="padding-left: 10px;">
@@ -135,8 +145,10 @@
               <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
                 This field is required!
               </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('maxlength')">
+                Car  Bran11Name cannot be more than 30 characters
+              </mat-error>
             </mat-form-field>
-
             <mat-form-field appearance="outline">
               <mat-label>Registration Number</mat-label>
               <input matInput #carno type="text" formControlName="RegistrationNo" style="padding-left: 10px;">
@@ -151,10 +163,7 @@
                 Car registration number cannot be more than 10 characters
               </mat-error>
             </mat-form-field>
-
           </div>
-
-
         </form>
       </div>
       <div class="modal-footer">

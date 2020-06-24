@@ -12,6 +12,21 @@
     }
     .all-items-div{
         margin-top: 30px;
+        .edit{
+            // padding: 10px;
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+            cursor: pointer;
+            &:hover{
+                transition: 0.3s;
+                background-color: #EAEAEA;
+            }
+        }
         .card-div{
             margin-top: 20px;
             img{
@@ -32,3 +47,26 @@
     top: 5px;
     right: 5px;
   }
+
+  .white-icon {
+    color: white;
+}
+
+
+.modal-footer .btn+.btn {
+    margin-left: 5px;
+    margin-bottom: auto;
+}
+
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #673ab7;
+    border-color: #673ab7;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #673ab7;
+    border-color: #673ab7;
+}

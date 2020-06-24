@@ -65,8 +65,9 @@ export class SlotSelectionComponent implements OnInit {
   }
 
   bookService(SlotTime) {
-    this.userdetails.BookingDate = this.date1;
+    this.userdetails.BookingDate = this.date;
     this.userdetails.SlotTime = SlotTime;
+    //this.userdetails.Date = this.date;
     localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
     this._router.navigate(['../booking/summary']);
   }

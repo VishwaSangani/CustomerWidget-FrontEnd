@@ -32,7 +32,7 @@ export class CustomerserviceService {
   }
 
   UpdateCustomer(id, data) {
-    return this.http.put(this.baseUrl + 'api/editCustomer?id=' + id, JSON.stringify(data), this.httpOptions)
+    return this.http.put(this.baseUrl + 'editCustomer?id=' + id, JSON.stringify(data), this.httpOptions)
     // .pipe(
     //   retry(1),
     //   catchError(this.errorHandl)

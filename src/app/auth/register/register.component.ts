@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
         validator: this.passwordMatch('password','confirmPassword')
       }
     );
+    
   }
 
   passwordMatch(password: string, confirmPassword: string){

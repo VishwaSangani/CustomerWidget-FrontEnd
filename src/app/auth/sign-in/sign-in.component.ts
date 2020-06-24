@@ -55,10 +55,12 @@ export class SignInComponent implements OnInit {
             DealerId: null,
             BookingDate: null,
             SlotTime: null,
+            Password: this.customer.Password,
             CustomerId: data["CustomerId"]
           }
           localStorage.setItem('UserDetails', JSON.stringify(this.userdetails));
           this.userError = ""
+          console.log(this.userdetails);
           this.router.navigate(['/booking']);
         },
         (error: HttpErrorResponse) => {
