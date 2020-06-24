@@ -1,3 +1,4 @@
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ComponentsComponent } from './components/components.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,15 @@ const routes: Routes = [
       {
         path: 'calendar',
         component: CalendarComponent
+      },
+      {
+        path: 'admin-login',
+        component: AdminLoginComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'admin-login',
+        pathMatch: 'full'
       }
     ]
   }

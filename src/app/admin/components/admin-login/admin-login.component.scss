@@ -1,0 +1,35 @@
+.main-back{
+    min-height: 100vh;
+    width: 100%;
+    .card-back{
+        height: auto;
+        min-width: 30%;
+        background: #e3e3e3;
+        border-radius: 5px;
+        .card-heading{
+            height: 56px;
+            background: #673AB7;
+            width: 100%;
+            border-radius: 5px 5px 0 0;
+            .h4-heading{
+                padding: 0;
+                margin: 0;
+                color: #e3e3e3;
+                font-size: 22px;
+            }
+        }
+        .card-body{
+            height: calc(100% - 56px);
+            form{
+                height: 100%;
+                .inputs{
+                    width: 100%;
+                    font-size: 16px;
+                }
+            }
+            button{
+                margin: 15px 0 0 0;
+            }
+        }
+    }
+}
