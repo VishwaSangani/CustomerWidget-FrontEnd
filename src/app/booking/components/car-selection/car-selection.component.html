@@ -53,6 +53,9 @@
               <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
                 This field is required!
               </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('Model').hasError('maxlength')">
+                Car Model Name cannot be more than 30 characters
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="outline">
@@ -64,6 +67,9 @@
               </button>
               <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
                 This field is required!
+              </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('maxlength')">
+                Car Brandname cannot be more than 30 characters
               </mat-error>
             </mat-form-field>
 
@@ -89,8 +95,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-        <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click)="addCar()">Add
-          Car</button>
+        <button type="button" class="btn btn-primary" [disabled]="carDetailsForm.invalid" (click)="addCar()">Add Car</button>
       </div>
     </div>
   </div>
@@ -113,7 +118,6 @@
         <form [formGroup]="carDetailsForm">
           <div class="d-flex flex-column">
             <mat-form-field class="example-full-width" appearance="outline">
-              <input matInput #carid type="text" formControlName="CarId" hidden>
               <mat-label>Car Name</mat-label>
               <input matInput #carname type="text" formControlName="Model" style="padding-left: 10px;">
               <button mat-button *ngIf="carname.value" matSuffix mat-icon-button aria-label="Clear"
@@ -122,6 +126,9 @@
               </button>
               <mat-error *ngIf="carDetailsForm.get('Model').hasError('required')">
                 This field is required!
+              </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('Model').hasError('maxlength')">
+                Car Model Name cannot be more than 30 characters
               </mat-error>
             </mat-form-field>
 
@@ -134,6 +141,9 @@
               </button>
               <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('required')">
                 This field is required!
+              </mat-error>
+              <mat-error *ngIf="carDetailsForm.get('BrandName').hasError('maxlength')">
+                Car  Bran11Name cannot be more than 30 characters
               </mat-error>
             </mat-form-field>
 

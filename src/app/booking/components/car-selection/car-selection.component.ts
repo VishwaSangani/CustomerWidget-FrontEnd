@@ -29,8 +29,8 @@ export class CarSelectionComponent implements OnInit {
     this.getAllCars();
     this.carDetailsForm = this.fb.group({
       CarId: null,
-      Model: ['', Validators.required],
-      BrandName: ['', Validators.required],
+      Model: ['', [Validators.required, Validators.maxLength(30)]],
+      BrandName: ['', [Validators.required, Validators.maxLength(30)]],
       RegistrationNo: ['', [Validators.required, Validators.maxLength(10)]]
     });
   }

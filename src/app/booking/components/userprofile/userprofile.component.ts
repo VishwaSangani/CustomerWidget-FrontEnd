@@ -98,8 +98,8 @@ export class UserprofileComponent implements OnInit {
     value()
     {
       this.registerForm = this.formBuilder.group({
-      firstName : [this.customer.FirstName,[Validators.required,Validators.pattern('^[a-zA-Z ]*$')]],
-      lastName : [this.customer.LastName,[Validators.required,Validators.pattern('^[a-zA-Z ]*$')]],
+      firstName : [this.customer.FirstName,[Validators.required,Validators.maxLength(30),Validators.pattern('^[a-zA-Z ]*$')]],
+      lastName : [this.customer.LastName,[Validators.required,Validators.maxLength(30),Validators.pattern('^[a-zA-Z ]*$')]],
       emailId : [this.customer.Email,[Validators.required,Validators.email]],
       address : [this.address1,Validators.required],
       address2 : [this.address2],

@@ -36,3 +36,22 @@
   .white-icon {
     color: white;
 }
+
+
+.modal-footer .btn+.btn {
+    margin-left: 5px;
+    margin-bottom: auto;
+}
+
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #673ab7;
+    border-color: #673ab7;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #673ab7;
+    border-color: #673ab7;
+}

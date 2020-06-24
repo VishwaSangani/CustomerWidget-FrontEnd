@@ -10,7 +10,8 @@
                 <div class="col-md-6 col-12 data-center">
                     <mat-card class="card-div">
                         <mat-card-header class="d-flex">
-                            <mat-card-title>{{details.customerName}}</mat-card-title>
+                            <!-- <mat-card-title>{{details.customerName}}</mat-card-title> -->
+                            <mat-card-subtitle><label><b>Customer Name:</b></label> {{details.customerName}}</mat-card-subtitle>
                             <mat-card-subtitle><label><b>Car:</b></label> {{details.carName}}</mat-card-subtitle>
                             <mat-card-subtitle><label><b>Registration Number:</b></label> {{details.CarNo}}
                             </mat-card-subtitle>
@@ -20,7 +21,7 @@
                             </mat-card-subtitle>
                             <mat-card-subtitle><label><b>Address:</b></label> {{details.address}}</mat-card-subtitle>
                             <mat-card-subtitle><label><b>Package:</b></label> {{details.package}}</mat-card-subtitle>
-                            <mat-card-subtitle><label><b>Date:</b></label> {{details.date}}</mat-card-subtitle>
+                            <mat-card-subtitle><label><b>Date:</b></label> {{details.date | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
                             <mat-card-subtitle><label><b>Time:</b></label> {{details.time}}</mat-card-subtitle>
                             <mat-card-subtitle><label><b>Services:</b></label> {{details.services}}
                             </mat-card-subtitle>
@@ -85,7 +86,7 @@
             <mat-toolbar color="primary">
                 <mat-toolbar-row>
                     <h5 class="modal-title">Confirmation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+                    <button type="button" class="close white-icon" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </mat-toolbar-row>
@@ -94,7 +95,7 @@
         <div class="modal-body">
           <p style="font-size: medium;">
             Thank you for booking your appointment with us!<br>
-            Your order Id is <strong>{{appointmentId}}</strong>. See you on {{details.date}} at {{details.time}}
+            Your order id is <strong>{{appointmentId}}</strong>. See you on {{details.date | date: 'dd/MM/yyyy'}} at {{details.time}}
           </p>
         </div>
         <div class="modal-footer">

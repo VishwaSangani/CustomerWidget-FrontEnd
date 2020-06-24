@@ -8,7 +8,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppointmentService } from 'src/app/shared/services/appointment.service';
+import * as _moment from 'moment';
+import { default as _rollupMoment } from 'moment';
 
+const moment = _rollupMoment || _moment;
 @Component({
   selector: 'app-confirm',
   templateUrl: './confirm.component.html',
@@ -76,12 +79,21 @@ export class ConfirmComponent implements OnInit {
   }
 
   save() {
+//     console.log(this.details.date)
+//     let dateString = '1968-11-16T00:00:00' 
+// let newDate = new Date(this.details.date);
+// console.log(newDate)
+// console.log(typeof(this.details.date))
+let myDate = this.details.date.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2-$1-$3")
+console.log("MyDate: "+ myDate)
+let newDate = this.datePipe.transform(myDate, 'yyyy-MM-dd', 'es-ES');
+console.log(newDate)
     const postsummary: PostSummary = {
       Email: this.userdetails.Email,
       DealerId: this.userdetails.DealerId,
       CarId: this.userdetails.CarId,
       PackageId: this.userdetails.PackageId,
-      dateOfbooking: this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
+      dateOfbooking: this.userdetails.BookingDate,//this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
       slotTime: this.details.time
     };
     console.log(postsummary);
@@ -102,7 +114,7 @@ export class ConfirmComponent implements OnInit {
     let dataObject = {
       Email: this.userdetails.Email,
       CarId : this.userdetails.CarId,
-      Slotdate : this.datePipe.transform(this.details.date, 'yyyy-dd-MM'),
+      Slotdate : this.userdetails.BookingDate,
       Slottime : this.userdetails.SlotTime
     }
     console.log(dataObject);
