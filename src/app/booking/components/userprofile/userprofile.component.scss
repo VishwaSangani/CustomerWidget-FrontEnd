@@ -64,3 +64,25 @@
 .toppad
 {margin-top:20px;
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: #673ab7;
+    border-color: #673ab7;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #673ab7;
+    border-color: #673ab7;
+}
+
+.panel-info>.panel-heading {
+    color: #7c318f;
+    background-color: #efd9f7;
+    border-color: #efd9f7;
+}
+
+.panel-info {
+    border-color: #efd9f7;
+}

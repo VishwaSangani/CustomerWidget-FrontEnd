@@ -137,6 +137,7 @@ console.log(newDate)
 
   closeModal() {
     this.showModal = false;
+    this.router.navigate(['/booking']);
   }
 
   redirect() {
