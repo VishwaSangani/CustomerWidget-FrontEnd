@@ -1,13 +1,18 @@
 .container{
     padding: 0;
 }
+
+a{
+    color:white;
+}
+
 .mat-toolbar-row{
     display: flex;
     h3{
         flex: 1;
         cursor: pointer;
     }
-    .items-right{
+    .spacer{
         display: flex;
         flex: 3;
         justify-content: flex-end;
