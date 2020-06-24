@@ -6,8 +6,8 @@ import { Summary, PostSummary } from '../models/Summary';
   providedIn: 'root'
 })
 export class SummaryService {
-  //private baseUrl: string = 'http://localhost:59699/api/';
-  private baseUrl:string = ' http://127.0.0.1:8080/api/';
+  private baseUrl: string = 'http://localhost:59699/api/';
+  //private baseUrl:string = ' http://127.0.0.1:8080/api/';
 
   constructor(private http: HttpClient,
   ) { }
