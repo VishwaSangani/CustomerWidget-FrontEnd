@@ -1,51 +1,57 @@
 <section>
   <div class="container main flex-column d-flex">
-      <div class="cardBack">
-        <mat-toolbar color="primary">
-          <mat-toolbar-row>
-            <span>Sign In</span>
-          </mat-toolbar-row>
-        </mat-toolbar>
-        <div class="items d-flex flex-column">
-          <form [formGroup]="signinform" class="example-form">
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Username</mat-label>
-                  <button mat-icon-button matPrefix style="font-size: 20px;"><mat-icon style="margin-left: 5px;">account_circle</mat-icon></button>
-                  <input matInput #username type="email" formControlName="userName" style="padding-left: 10px;">
-                  <button mat-button *ngIf="username.value" matSuffix mat-icon-button aria-label="Clear" (click)="signinform.get('userName').reset()">
-                    <mat-icon style="font-size: small;">close</mat-icon>
-                  </button>
-                  <mat-error *ngIf="signinform.get('userName').hasError('required')">
-                    This field is required!
-                  </mat-error>
-                  <mat-error *ngIf="signinform.get('userName').hasError('email')">
-                    Please enter valid email
-                  </mat-error>
-                </mat-form-field>
+    <div class="cardBack">
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <span>Sign In</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="items d-flex flex-column">
+        <form [formGroup]="signinform" class="example-form">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Username</mat-label>
+            <button mat-icon-button matPrefix style="font-size: 20px;">
+              <mat-icon style="margin-left: 5px;">account_circle</mat-icon>
+            </button>
+            <input matInput #username type="email" formControlName="userName" style="padding-left: 10px;">
+            <button mat-button *ngIf="username.value" matSuffix mat-icon-button aria-label="Clear"
+              (click)="signinform.get('userName').reset()">
+              <mat-icon style="font-size: small;">close</mat-icon>
+            </button>
+            <mat-error *ngIf="signinform.get('userName').hasError('required')">
+              This field is required!
+            </mat-error>
+            <mat-error *ngIf="signinform.get('userName').hasError('email')">
+              Please enter valid email
+            </mat-error>
+          </mat-form-field>
 
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Password</mat-label>
-                  <button mat-icon-button matPrefix style="font-size: 20px;"><mat-icon style="margin-left: 5px;">vpn_key</mat-icon></button>
-                  <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                  <mat-error *ngIf="signinform.get('password').hasError('required')">
-                    This field is required!
-                  </mat-error>
-                </mat-form-field>
-                <p *ngIf="userError" style="color: red;">{{userError}} </p>
-                
-          </form>  
-          <p class="text-center" style="font-size: 15px;">
-            Don't have an account? <a mat-button routerLink="../register">Register Here</a>
-          </p>
-          <p class="text-center" style="font-size: 15px;">
-            <a mat-button routerLink="../forgetPassword">Forgot Password</a>
-          </p>
-          <button mat-flat-button color="primary" [disabled]="signinform.invalid" (click)="onSubmit()">Login</button>           
-        </div>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <button mat-icon-button matPrefix style="font-size: 20px;">
+              <mat-icon style="margin-left: 5px;">vpn_key</mat-icon>
+            </button>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="signinform.get('password').hasError('required')">
+              This field is required!
+            </mat-error>
+          </mat-form-field>
+          <p *ngIf="userError" style="color: red;">{{userError}} </p>
+
+        </form>
+        <p class="text-center" style="font-size: 15px;">
+          Don't have an account? <a mat-button routerLink="../register">Register Here</a>
+        </p>
+        <p class="text-center" style="font-size: 15px;">
+          <a mat-button routerLink="../forgetPassword">Forgot Password</a>
+        </p>
+        <button mat-flat-button color="primary" [disabled]="signinform.invalid" (click)="onSubmit()">Login</button>
       </div>
-      
+    </div>
+
   </div>
 </section>

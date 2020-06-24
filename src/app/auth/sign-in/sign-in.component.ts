@@ -16,7 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class SignInComponent implements OnInit {
 
   signinform: FormGroup;
-  userError : string;
+  userError: string;
   customer: UserLogin = {
     Email: null,
     Password: null
@@ -34,8 +34,6 @@ export class SignInComponent implements OnInit {
     });
   }
 
-
-
   onSubmit() {
     const md5 = new Md5();
     var encPwd = md5.appendAsciiStr(this.signinform.controls.password.value).end();
@@ -46,7 +44,7 @@ export class SignInComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data["CustomerId"]);
-        
+
           this.userdetails = {
             Email: this.customer.Email,
             CarId: null,
@@ -64,7 +62,7 @@ export class SignInComponent implements OnInit {
           this.router.navigate(['/booking']);
         },
         (error: HttpErrorResponse) => {
-          
+
           this.userError = error.error;
         });
 
