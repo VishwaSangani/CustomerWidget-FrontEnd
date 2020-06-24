@@ -7,8 +7,8 @@ import { Slot } from '../models/slot';
 })
 export class SlotService {
 
-  //private baseurl: string = 'http://localhost:59699/api/';
-  private baseurl:string = ' http://127.0.0.1:8080/api/';
+  private baseurl: string = 'http://localhost:59699/api/';
+  //private baseurl:string = ' http://127.0.0.1:8080/api/';
 
   constructor(private http: HttpClient) { }
 
